@@ -1,18 +1,14 @@
+// En el archivo index.js
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
+import CrearSudadera from "./components/js/CrearSudadera.js"; // Importa el componente App
 
-import CreateSudaderaForm from "./components/js/formulario.js"; // Ajusta la ruta según sea necesario
-
-import reportWebVitals from "./reportWebVitals";
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+ReactDOM.render(
     <React.StrictMode>
-        <CreateSudaderaForm />
-    </React.StrictMode>
-);
+            <h1>Hola</h1>
+        <CrearSudadera /> {/* Renderiza el componente App */}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+    </React.StrictMode>,
+    document.getElementById("root")
+);

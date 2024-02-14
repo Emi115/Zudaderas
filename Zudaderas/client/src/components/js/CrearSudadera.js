@@ -1,7 +1,8 @@
+//CrearSudadera.js
 import React, { useState } from "react";
-import "../css/formulario.css";
+import "../css/CrearSudadera.css";
 
-function CreateSudaderaForm() {
+function CrearSudadera() {
     const [formData, setFormData] = useState({
         nombre: "",
         color: "",
@@ -76,7 +77,6 @@ function CreateSudaderaForm() {
 
     return (
         <form onSubmit={handleSubmit} className="tu-clase-formulario">
-            <p id="mensaje">{mensaje}</p>
             <div>
                 <label htmlFor="nombre">Nombre:</label>
                 <input
@@ -150,7 +150,7 @@ function CreateSudaderaForm() {
             <div>
                 <label htmlFor="precio">Precio:</label>
                 <input
-                    type="text"
+                    type="number"
                     id="precio"
                     name="precio"
                     value={formData.precio}
@@ -164,6 +164,7 @@ function CreateSudaderaForm() {
                     name="descripcion"
                     value={formData.descripcion}
                     onChange={handleChange}
+                    style={{ resize: "none" }}
                 />
             </div>
             <div>
@@ -176,9 +177,15 @@ function CreateSudaderaForm() {
                     onChange={handleChange}
                 />
             </div>
+
+            {/* Mensaje de error colocado justo antes del botón de envío */}
+            <p id="mensaje" className={mensaje ? "mensaje-error" : ""}>
+                {mensaje}
+            </p>
+
             <button type="submit">Crear Sudadera</button>
         </form>
     );
 }
 
-export default CreateSudaderaForm;
+export default CrearSudadera;
