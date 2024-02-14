@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Crear Sudadera</title>
+    <link rel="stylesheet" href="css/formularioCreacion.css" />
+  </head>
+  <body>
+    <h2>Crear Sudadera</h2>
+    <form id="createSudaderaForm">
+      <label for="nombre">Nombre:</label><br />
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        required
+        autocomplete="off"
+      /><br />
+
+      <label for="color">Color:</label><br />
+      <input
+        type="text"
+        id="color"
+        name="color"
+        required
+        autocomplete="off"
+      /><br />
+
+      <label for="dibujo">Dibujo:</label><br />
+      <input
+        type="text"
+        id="dibujo"
+        name="dibujo"
+        required
+        autocomplete="off"
+      /><br />
+
+      <label for="talla">Talla:</label><br />
+      <input
+        type="text"
+        id="talla"
+        name="talla"
+        required
+        autocomplete="off"
+      /><br />
+
+      <label for="foto">Foto Principal (URL):</label><br />
+      <input
+        type="text"
+        id="foto"
+        name="foto"
+        required
+        autocomplete="off"
+      /><br />
+
+      <!-- Nuevo campo para fotos secundarias -->
+      <label for="fotosSecundarias"
+        >Fotos Secundarias (URLs separadas por espacios):</label
+      ><br />
+      <input
+        type="text"
+        id="fotosSecundarias"
+        name="fotosSecundarias"
+        autocomplete="off"
+      /><br />
+      <!-- Fin del nuevo campo -->
+
+      <label for="capucha">Capucha:</label><br />
+      <input type="checkbox" id="capucha" name="capucha" /><br />
+
+      <label for="precio">Precio:</label><br />
+      <input
+        type="number"
+        id="precio"
+        name="precio"
+        required
+        autocomplete="off"
+      /><br />
+
+      <label for="descripcion">Descripción:</label><br />
+      <textarea
+        id="descripcion"
+        name="descripcion"
+        required
+        autocomplete="off"
+      ></textarea
+      ><br />
+
+      <label for="stock">Stock:</label><br />
+      <input
+        type="number"
+        id="stock"
+        name="stock"
+        required
+        autocomplete="off"
+      /><br />
+
+      <input type="submit" value="Crear Sudadera" />
+    </form>
+
+    <div id="mensaje"></div>
+    <!-- Div para mostrar el mensaje de advertencia -->
+
+    <script src="js/formularioSudaderas.js"></script>
+  </body>
+</html>

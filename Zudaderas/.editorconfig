@@ -1,0 +1,50 @@
+# EditorConfig es una herramienta que ayuda a mantener consistentes los estilos de codificación entre diferentes editores e IDEs.
+# Cada sección (encerrada entre corchetes) define las configuraciones para un conjunto específico de archivos.
+# Los comentarios después del símbolo '#' son explicaciones que ayudan a entender para qué se utiliza cada configuración.
+
+# Archivo EditorConfig en la parte superior del proyecto
+root = true
+
+# Saltos de línea de estilo Unix con un salto de línea al final de cada archivo
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+# Sangrado de 4 espacios para los siguientes tipos de archivos: JavaScript, Java, HTML, CSS, JSX, TypeScript, TSX, Sass
+[*.{js,java,html,css,jsx,ts,tsx,sass}]
+indent_style = space
+indent_size = 4
+
+# Sangrado de 2 espacios para archivos JSON
+[*.json]
+indent_style = space
+indent_size = 2
+
+# Coincide con archivos exactos, ya sea package.json o .travis.yml, y aplica un sangrado de 2 espacios
+[{package.json,.travis.yml}]
+indent_style = space
+indent_size = 2
+
+# Agrega un salto de línea al final de los archivos CSS
+[*.css]
+insert_final_newline = true
+
+# Orden predefinido de las propiedades CSS para mantener la consistencia en el proyecto
+[*.css]
+properties_order = "position, display, ... , color"
+
+# Agrega espacios alrededor de los paréntesis en JavaScript, Java, TypeScript y JSX
+[*.{js,jsx,ts,tsx}]
+space_in_parentheses = true
+
+# Sangrado de 4 espacios para la continuación de línea en JavaScript, Java, HTML, CSS, JSX, TypeScript, TSX y Sass
+[*.{js,java,html,css,jsx,ts,tsx,sass}]
+continuation_indent_size = 4
+
+# Elimina automáticamente los espacios en blanco al final de cada línea
+[*]
+trim_trailing_whitespace = true
+
+# Especifica la codificación de caracteres como UTF-8 para todos los archivos
+[*]
+charset = utf-8
