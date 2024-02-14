@@ -1,10 +1,10 @@
 import { Router } from "express";
 import {
-  createSudadera,
-  updateSudadera,
-  getSudaderas,
-  deleteSudadera,
-  searchSudaderas,
+    createSudadera,
+    updateSudadera,
+    getSudaderas,
+    deleteSudadera,
+    searchSudaderas,
 } from "../controllers/sudadera-controller.js";
 
 const router = Router();

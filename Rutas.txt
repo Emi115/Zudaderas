@@ -1,0 +1,129 @@
+Listado de rutas de carpetas para el volumen Disco local
+El número de serie del volumen es E216-A89B
+C:.
+¦   .gitattributes
+¦   .gitignore
+¦   LICENSE
+¦   README.md
+¦   Rutas.txt
+¦   
++---Zudaderas
+    ¦   .editorconfig
+    ¦   readme.md
+    ¦   
+    +---.vscode
+    ¦       launch.json
+    ¦       
+    +---client
+    ¦   ¦   .gitignore
+    ¦   ¦   package-lock.json
+    ¦   ¦   package.json
+    ¦   ¦   
+    ¦   +---cosas que copiar a react
+    ¦   ¦   +---css
+    ¦   ¦   ¦       detallesSudaderas.css
+    ¦   ¦   ¦       formularioCreacion.css
+    ¦   ¦   ¦       obtenerSudaderas.css
+    ¦   ¦   ¦       
+    ¦   ¦   +---html
+    ¦   ¦   ¦       detalles.html
+    ¦   ¦   ¦       formularioSudaderas.html
+    ¦   ¦   ¦       index.html
+    ¦   ¦   ¦       obtenerSudaderas.html
+    ¦   ¦   ¦       
+    ¦   ¦   +---js
+    ¦   ¦           detallesSudaderas.js
+    ¦   ¦           formularioSudaderas.js
+    ¦   ¦           obtenerSudaderas.js
+    ¦   ¦           
+    ¦   +---public
+    ¦   ¦   ¦   favicon.ico
+    ¦   ¦   ¦   index.html
+    ¦   ¦   ¦   logo192.png
+    ¦   ¦   ¦   logo512.png
+    ¦   ¦   ¦   manifest.json
+    ¦   ¦   ¦   robots.txt
+    ¦   ¦   ¦   
+    ¦   ¦   +---images
+    ¦   ¦           Oksana.jpg
+    ¦   ¦           sudaderaaot.jpg
+    ¦   ¦           sudaderaaot2.jpg
+    ¦   ¦           sudaderaaotnieves.jpg
+    ¦   ¦           sudaderacielo.jpg
+    ¦   ¦           sudaderasara.jpg
+    ¦   ¦           sudaderaspider.jpg
+    ¦   ¦           sudaderastarwars.jpg
+    ¦   ¦           sudaderastarwars2.jpg
+    ¦   ¦           
+    ¦   +---src
+    ¦       ¦   index.js
+    ¦       ¦   reportWebVitals.js
+    ¦       ¦   
+    ¦       +---assets
+    ¦       +---components
+    ¦       ¦   +---CrearSudaderas
+    ¦       ¦   ¦       CrearSudadera.css
+    ¦       ¦   ¦       CrearSudadera.js
+    ¦       ¦   ¦       
+    ¦       ¦   +---js
+    ¦       ¦   +---Prueba
+    ¦       ¦           Catalogo.js
+    ¦       ¦           
+    ¦       +---pages
+    ¦           +---home
+    ¦           +---login
+    +---docker
+    ¦       docker-compose.yml
+    ¦       
+    +---server
+        ¦   .env
+        ¦   .env.template
+        ¦   package-lock.json
+        ¦   package.json
+        ¦   
+        +---src
+            ¦   app.js
+            ¦   config.js
+            ¦   index.js
+            ¦   
+            +---config
+            ¦       morgan.js
+            ¦       
+            +---controllers
+            ¦       login-controller.js
+            ¦       misc-controller.js
+            ¦       sudadera-controller.js
+            ¦       
+            +---loaders
+            ¦       express-loader.js
+            ¦       index.js
+            ¦       mongodb-loader.js
+            ¦       
+            +---middlewares
+            ¦       auth-middleware.js
+            ¦       error-middleware.js
+            ¦       query-middleware.js
+            ¦       
+            +---models
+            ¦       index.js
+            ¦       Sudadera.js
+            ¦       
+            +---openapi
+            ¦       examples.yml
+            ¦       index.js
+            ¦       paths.yml
+            ¦       responses.yml
+            ¦       schemas.yml
+            ¦       security.yml
+            ¦       
+            +---routes
+            ¦       index.js
+            ¦       misc-router.js
+            ¦       sudadera-router.js
+            ¦       
+            +---utils
+                    encrypt.js
+                    index.js
+                    logger.js
+                    pagination.js
+                    

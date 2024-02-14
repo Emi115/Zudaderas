@@ -7,6 +7,6 @@ const router = express.Router();
 router.post("/login", login);
 router.use("/sudadera", sudaderaRouter);
 
-router.use(miscRouter);
+
 
 export default router;

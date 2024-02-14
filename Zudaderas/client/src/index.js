@@ -1,7 +1,7 @@
 // En el archivo index.js
 import React from "react";
 import ReactDOM from "react-dom";
-import CrearSudadera from "./components/js/CrearSudadera.js"; // Importa el componente App
+import CrearSudadera from "./components/CrearSudaderas/CrearSudadera.js"; // Importa el componente App
 
 ReactDOM.render(
     <React.StrictMode>
