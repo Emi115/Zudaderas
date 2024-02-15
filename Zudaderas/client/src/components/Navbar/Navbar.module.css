@@ -1,0 +1,20 @@
+.navbar {
+    background-color: #004d99; /* Un color de fondo más oscuro */
+    display: flex;
+    justify-content: left; /* Alinea los elementos a la izquierda */
+    padding: 10px 20px;
+  }
+
+  .navLink {
+    color: white;
+    text-align: center;
+    padding: 12px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .navLink:hover {
+    background-color: #66b3ff; /* Un azul más claro para el hover */
+    border-radius: 5px; /* Bordes redondeados */
+  }

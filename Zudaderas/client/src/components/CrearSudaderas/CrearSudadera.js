@@ -1,6 +1,5 @@
-//CrearSudadera.js
 import React, { useState } from "react";
-import "./CrearSudadera.css";
+import styles from "./CrearSudadera.module.css";
 
 function CrearSudadera() {
     const [formData, setFormData] = useState({
@@ -74,117 +73,126 @@ function CrearSudadera() {
                 alert("Error al crear la sudadera");
             });
     };
-
     return (
-        <form onSubmit={handleSubmit} className="tu-clase-formulario">
-            <div>
-                <label htmlFor="nombre">Nombre:</label>
-                <input
-                    type="text"
-                    id="nombre"
-                    name="nombre"
-                    value={formData.nombre}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="color">Color:</label>
-                <input
-                    type="text"
-                    id="color"
-                    name="color"
-                    value={formData.color}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="dibujo">Dibujo:</label>
-                <input
-                    type="text"
-                    id="dibujo"
-                    name="dibujo"
-                    value={formData.dibujo}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="talla">Talla:</label>
-                <input
-                    type="text"
-                    id="talla"
-                    name="talla"
-                    value={formData.talla}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="foto">Foto principal:</label>
-                <input
-                    type="text"
-                    id="foto"
-                    name="foto"
-                    value={formData.foto}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="fotosSecundarias">Fotos Secundarias:</label>
-                <input
-                    type="text"
-                    id="fotosSecundarias"
-                    name="fotosSecundarias"
-                    value={formData.fotosSecundarias.join(" ")}
-                    onChange={handleFotosSecundariasChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="capucha">Capucha:</label>
-                <input
-                    type="checkbox"
-                    id="capucha"
-                    name="capucha"
-                    checked={formData.capucha}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="precio">Precio:</label>
-                <input
-                    type="number"
-                    id="precio"
-                    name="precio"
-                    value={formData.precio}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="descripcion">Descripción:</label>
-                <textarea
-                    id="descripcion"
-                    name="descripcion"
-                    value={formData.descripcion}
-                    onChange={handleChange}
-                    style={{ resize: "none" }}
-                />
-            </div>
-            <div>
-                <label htmlFor="stock">Stock:</label>
-                <input
-                    type="number"
-                    id="stock"
-                    name="stock"
-                    value={formData.stock}
-                    onChange={handleChange}
-                />
-            </div>
+        <form onSubmit={handleSubmit} className={styles.tuClaseFormulario}>
+    <div>
+        <label htmlFor="nombre" className={styles.label}>Nombre:</label>
+        <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            value={formData.nombre}
+            onChange={handleChange}
+            className={styles.input}
+        />
+    </div>
+    <div>
+        <label htmlFor="color" className={styles.label}>Color:</label>
+        <input
+            type="text"
+            id="color"
+            name="color"
+            value={formData.color}
+            onChange={handleChange}
+            className={styles.input}
+        />
+    </div>
+    <div>
+        <label htmlFor="dibujo" className={styles.label}>Dibujo:</label>
+        <input
+            type="text"
+            id="dibujo"
+            name="dibujo"
+            value={formData.dibujo}
+            onChange={handleChange}
+            className={styles.input}
+        />
+    </div>
+    <div>
+        <label htmlFor="talla" className={styles.label}>Talla:</label>
+        <input
+            type="text"
+            id="talla"
+            name="talla"
+            value={formData.talla}
+            onChange={handleChange}
+            className={styles.input}
+        />
+    </div>
+    <div>
+        <label htmlFor="foto" className={styles.label}>Foto principal:</label>
+        <input
+            type="text"
+            id="foto"
+            name="foto"
+            value={formData.foto}
+            onChange={handleChange}
+            className={styles.input}
+        />
+    </div>
+    <div>
+        <label htmlFor="fotosSecundarias" className={styles.label}>Fotos Secundarias:</label>
+        <input
+            type="text"
+            id="fotosSecundarias"
+            name="fotosSecundarias"
+            value={formData.fotosSecundarias.join(" ")}
+            onChange={handleFotosSecundariasChange}
+            className={styles.input}
+        />
+    </div>
+    <div>
+        <label htmlFor="capucha" className={styles.label}>Capucha:</label>
+        <input
+            type="checkbox"
+            id="capucha"
+            name="capucha"
+            checked={formData.capucha}
+            onChange={handleChange}
+            className={styles.input} // Asumiendo que quieres aplicar un estilo genérico a todos los inputs, incluyendo checkboxes
+        />
+    </div>
+    <div>
+        <label htmlFor="precio" className={styles.label}>Precio:</label>
+        <input
+            type="number"
+            id="precio"
+            name="precio"
+            value={formData.precio}
+            onChange={handleChange}
+            className={styles.input}
+        />
+    </div>
+    <div>
+        <label htmlFor="descripcion" className={styles.label}>Descripción:</label>
+        <textarea
+            id="descripcion"
+            name="descripcion"
+            value={formData.descripcion}
+            onChange={handleChange}
+            className={`${styles.textarea}`} // Agregado según el patrón de clase sugerido en CSS
+            style={{ resize: "none" }}
+        />
+    </div>
+    <div>
+        <label htmlFor="stock" className={styles.label}>Stock:</label>
+        <input
+            type="number"
+            id="stock"
+            name="stock"
+            value={formData.stock}
+            onChange={handleChange}
+            className={styles.input}
+        />
+    </div>
 
-            {/* Mensaje de error colocado justo antes del botón de envío */}
-            <p id="mensaje" className={mensaje ? "mensaje-error" : ""}>
-                {mensaje}
-            </p>
+    {/* Mensaje de error con la clase actualizada */}
+    <p id="mensaje" className={mensaje ? styles.mensajeError : ""}>
+        {mensaje}
+    </p>
 
-            <button type="submit">Crear Sudadera</button>
-        </form>
+    <button type="submit" className={styles.boton}>Crear Sudadera</button>
+</form>
     );
 }
 
