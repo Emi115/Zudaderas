@@ -1,6 +1,6 @@
 //CrearSudadera.js
 import React, { useState } from "react";
-import "../css/CrearSudadera.css";
+import "./CrearSudadera.css";
 
 function CrearSudadera() {
     const [formData, setFormData] = useState({
