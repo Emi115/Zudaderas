@@ -1,0 +1,215 @@
+{
+	"info": {
+		"_postman_id": "d87d1eed-f06c-4b36-8661-25dd3f7644d4",
+		"name": "Usuarios token",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31612848"
+	},
+	"item": [
+		{
+			"name": "Crear usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"Diego\",\r\n  \"email\": \"Maricon@gmail.com\",\r\n  \"phoneNumber\": 7,\r\n  \"password\": \"Diego\",\r\n  \"address\": {\r\n    \"street\": \"Calle Principal\",\r\n    \"city\": \"Ciudad Ejemplo\",\r\n    \"state\": \"Estado Ejemplo\",\r\n    \"zip\": \"12345\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hacer login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"Diego\",\r\n  \"password\": \"Diego\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get ME",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDIyZTRlOTk4NDM5NDcxMDRjYzZjMCIsInVzZXJuYW1lIjoiRGllZ28iLCJpYXQiOjE3MDgyNzMyNTAsImV4cCI6MTcwODI3Njg1MH0.uT2rMkxsdk0wFb3nuOfgv_yh1dHKMN1OtgQRn-5Zx6A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get usuarios",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDIyZGQ4OTk4NDM5NDcxMDRjYzZiYSIsInVzZXJuYW1lIjoiZW1pIiwiaWF0IjoxNzA4MjczMTE1LCJleHAiOjE3MDgyNzY3MTV9.a8hzhWSn77-ajvIgz2CqMsz9K8gAAVSfoh1d9Rt9LhA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDIyZGQ4OTk4NDM5NDcxMDRjYzZiYSIsInVzZXJuYW1lIjoiZW1pIiwiaWF0IjoxNzA4MjczMTE1LCJleHAiOjE3MDgyNzY3MTV9.a8hzhWSn77-ajvIgz2CqMsz9K8gAAVSfoh1d9Rt9LhA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"emi\",\r\n  \"email\": \"usuario@example.com\",\r\n  \"phoneNumber\": 8,\r\n  \"password\": \"KENDALL\",\r\n  \"address\": {\r\n    \"street\": \"turia\",\r\n    \"city\": \"Ciudad real\",\r\n    \"state\": \"urrs\",\r\n    \"zip\": \"12345\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/emi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"emi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUSer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDIyOTZjN2Q0NTYzMmNlN2NiMzM0MyIsInVzZXJuYW1lIjoiZW1pIiwiaWF0IjoxNzA4MjcyNTA0LCJleHAiOjE3MDgyNzYxMDR9.7Xi02XFvmQKklhRh2y-IdaR6lRycarrghvvJofVn_tA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/emi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"emi"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

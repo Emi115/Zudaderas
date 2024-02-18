@@ -1,16 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styles from './Navbar.module.css'; // Asegúrate de que la ruta de importación es correcta
+// Navbar.js
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./Navbar.module.css";
 
 function Navbar() {
-  return (
-    <nav className={styles.navbar}>
-      <Link to="/" className={styles.navLink}>Inicio</Link>
-      <Link to="/about" className={styles.navLink}>Sobre mí</Link>
-      <Link to="/crearsudaderas" className={styles.navLink}>Crear Sudaderas</Link>
-      <Link to="/authForm" className={styles.navLink}>Login/Register</Link>
-    </nav>
-  );
+    return (
+        <nav className={styles.navbar}>
+            <Link to="/" className={styles.navLink}>
+                Inicio
+            </Link>
+            <Link to="/about" className={styles.navLink}>
+                Sobre mí
+            </Link>
+            <Link to="/crearsudaderas" className={styles.navLink}>
+                Crear Sudaderas
+            </Link>
+            <Link to="/rutaAl login" className={styles.navLink}>
+                Login/Register
+            </Link>
+
+        </nav>
+    );
 }
 
 export default Navbar;

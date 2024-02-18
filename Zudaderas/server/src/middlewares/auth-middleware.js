@@ -1,24 +1,25 @@
-import { HttpStatusError } from "common-errors";
 import jwt from "jsonwebtoken";
-import logger from "../utils/logger.js";
-
 import config from "../config.js";
 
 export function checkToken(req, res, next) {
-    console.log(req.headers.authorization);
-
     const { authorization } = req.headers;
 
-    if (!authorization) throw HttpStatusError(401, "No token provided");
-
-    const [_bearer, token] = authorization.split(" ");
-
-    try {
-        jwt.verify(token, config.app.secretKey);
-    } catch (err) {
-        logger.error(err.message);
-        throw HttpStatusError(401, "Invalid token");
+    if (!authorization) {
+        return res.status(401).json({ message: "No token provided" });
     }
 
-    next();
+    const [bearer, token] = authorization.split(" ");
+
+    if (bearer !== "Bearer" || !token) {
+        return res.status(401).json({ message: "Malformatted token" });
+    }
+
+    try {
+        const decoded = jwt.verify(token, config.app.secretKey);
+        // Asumiendo que el payload del token tiene una propiedad 'username'
+        req.user = { username: decoded.username };
+        next();
+    } catch (err) {
+        return res.status(401).json({ message: "Invalid token" });
+    }
 }
