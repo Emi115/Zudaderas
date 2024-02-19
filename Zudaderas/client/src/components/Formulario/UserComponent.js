@@ -57,24 +57,25 @@ function UserComponent() {
         }
     };
 
-
     const handleRegisterSubmit = async (e) => {
         e.preventDefault();
         try {
             // Asigna userCredentials para el registro si es necesario
             const registerData = {
-                ...userData,
-                username: userData.username,
-                password: userData.password,
+                ...userData, // Esto puede ser un error, debes asegurarte de qué campos necesitas
+                username: userCredentials.username, // Utiliza userCredentials.username
+                password: userCredentials.password, // Utiliza userCredentials.password
             };
             await axios.post("http://localhost:3000/users", registerData);
             alert("User registered successfully. Please log in.");
             setView("login");
+            window.location.reload(); // Actualiza la página después de crear el usuario
         } catch (error) {
             alert("Error registering user");
             console.error(error);
         }
     };
+
 
     // Actualiza la función de inicio de sesión si es necesario para reflejar cualquier cambio
     const handleLoginSubmit = async (e) => {
