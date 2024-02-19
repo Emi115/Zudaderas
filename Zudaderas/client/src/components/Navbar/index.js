@@ -18,6 +18,9 @@ function Navbar() {
             <Link to="/Formulario" className={styles.navLink}>
                 Login/Register
             </Link>
+            <Link to="/" className={styles.navLink}>
+                Mas Buscados
+            </Link>
 
         </nav>
     );

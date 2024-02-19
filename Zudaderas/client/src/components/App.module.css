@@ -1,0 +1,27 @@
+/* Reset básico para estandarizar estilos en diferentes navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif; /* Ajusta la fuente a tu preferencia */
+    line-height: 1.6;
+    margin: 20px;
+    background-color: rgb(155, 155, 155);
+
+}
+
+.container {
+    max-width: 800px; /* O el ancho que prefieras */
+    margin: auto;
+    padding: 20px;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .container, .header, .footer {
+        padding: 10px;
+    }
+}

@@ -60,22 +60,31 @@ function UserComponent() {
     const handleRegisterSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Asigna userCredentials para el registro si es necesario
-            const registerData = {
-                ...userData, // Esto puede ser un error, debes asegurarte de qué campos necesitas
-                username: userCredentials.username, // Utiliza userCredentials.username
-                password: userCredentials.password, // Utiliza userCredentials.password
-            };
-            await axios.post("http://localhost:3000/users", registerData);
-            alert("User registered successfully. Please log in.");
+            // El resto de tu lógica de registro...
+            alert("Usuario registrado , ahora puedes iniciar sesion");
+            setUserData({
+                registerUsername: "",
+                email: "",
+                phoneNumber: "",
+                registerPassword: "",
+                address: {
+                    street: "",
+                    city: "",
+                    state: "",
+                    zip: "",
+                },
+            });
+            setUserCredentials({
+                username: "",
+                password: "",
+            });
             setView("login");
-            window.location.reload(); // Actualiza la página después de crear el usuario
+            // window.location.reload(); // Considera evitar recargar la página para una experiencia de usuario más fluida.
         } catch (error) {
-            alert("Error registering user");
+            alert("Eror algo ha petado");
             console.error(error);
         }
     };
-
 
     // Actualiza la función de inicio de sesión si es necesario para reflejar cualquier cambio
     const handleLoginSubmit = async (e) => {
@@ -86,11 +95,15 @@ function UserComponent() {
                 userCredentials
             );
             localStorage.setItem("token", response.data.token);
+            setUserCredentials({
+                username: "",
+                password: "",
+            });
             setIsAuthenticated(true);
             setView("viewUser");
             fetchUserInfo(response.data.token);
         } catch (error) {
-            alert("Error logging in");
+            alert("Error Haciendo login ");
             console.error(error);
         }
     };
@@ -133,9 +146,9 @@ function UserComponent() {
 
             setIsEditing(false); // Desactiva el modo de edición
             fetchUserInfo(token); // Actualiza la información del usuario mostrada
-            alert("User info updated successfully"); // Muestra un mensaje de éxito
+            alert("Informacion Guardada que tenga un buen dia"); // Muestra un mensaje de éxito
         } catch (error) {
-            alert("Error updating user info"); // Muestra un mensaje de error en caso de fallo
+            alert("Error actualizando datos"); // Muestra un mensaje de error en caso de fallo
             console.error(error);
         }
     };
