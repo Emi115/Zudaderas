@@ -18,7 +18,7 @@ init(app, config);
 
 // Captura todas las solicitudes GET y las dirige al index.html de React para permitir la navegación del lado del cliente
 app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "../../client/build", "index.html"));
 });
 
 export default app;

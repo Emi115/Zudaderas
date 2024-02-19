@@ -15,7 +15,7 @@ function Navbar() {
             <Link to="/crearsudaderas" className={styles.navLink}>
                 Crear Sudaderas
             </Link>
-            <Link to="/rutaAl login" className={styles.navLink}>
+            <Link to="/Formulario" className={styles.navLink}>
                 Login/Register
             </Link>
 
