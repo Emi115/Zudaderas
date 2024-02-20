@@ -1,10 +1,11 @@
-/* Alineación del contenedor principal al centro */
+/* Estilos para el contenedor principal */
+/* Alinea el contenedor principal al centro verticalmente y horizontalmente */
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Hace que el contenedor tenga al menos el alto de la ventana */
+    min-height: 100vh; /* Garantiza que el contenedor tenga al menos el alto de la ventana */
     padding: 20px;
 }
 
@@ -13,37 +14,61 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 100%; /* Ajusta esto según prefieras */
-    max-width: 400px; /* Ajusta el ancho máximo del formulario */
+    width: 100%; /* Ajusta el ancho del formulario según prefieras */
+    max-width: 400px; /* Limita el ancho máximo del formulario */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    background-color: #646464;
+    align-items: center;
 }
 
+/* Estilos para los campos de entrada */
 .input {
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #838383;
+    background-color: #454545;
     border-radius: 4px;
     font-size: 16px;
+    color: #ffffff;
 }
-
+input:focus {
+    outline: none; /* Elimina el borde al enfocar el input */
+}
+/* Estilos para los botones */
 .button {
-    padding: 10px 20px;
+    padding: 8px 1px; /* Reducir el padding para hacer el botón más pequeño */
     border: none;
     border-radius: 4px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
+    background-color: #aeaeae;
+    color: #333;
+        cursor: pointer;
     font-size: 16px;
+    width: 140px; /* Ancho del botón */
 }
 
+/* Estilos para el botón secundario */
 .buttonSecondary {
-    background-color: #6c757d;
+    background-color: #aeaeae;
+    color: #333;
+    border: none;
+    padding: 8px 5px; /* Reducir el padding para hacer el botón más pequeño */
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 130px; /* Ancho del botón secundario */
 }
 
+/* Efecto hover para los botones */
 .button:hover {
-    opacity: 0.9;
+    opacity: 0.8; /* Reduce la opacidad al pasar el ratón */
+    color: #000000; /* Cambia el color del texto al pasar el ratón */
+
+}
+
+.buttonSecondary:hover {
+    opacity: 0.8; /* Reduce la opacidad al pasar el ratón */    border-color: #aaa; /* Cambia el color del borde al pasar el ratón */
+    color: #000000; /* Cambia el color del texto al pasar el ratón */
 }
 
 /* Estilos para la información del usuario y botones */
@@ -60,7 +85,7 @@
     align-items: center; /* Centra los elementos horizontalmente */
 }
 
-/* Ajuste adicional para texto y otros elementos dentro de userInfoContainer */
+/* Ajustes adicionales para el texto y otros elementos dentro de userInfoContainer */
 .userInfoText {
-    text-align: center; /* Asegura que el texto esté centrado dentro de su contenedor */
+    text-align: center; /* Centra el texto dentro de su contenedor */
 }

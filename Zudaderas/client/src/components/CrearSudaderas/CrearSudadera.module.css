@@ -9,7 +9,7 @@
     margin: 0 auto; /* Centra el formulario horizontalmente */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Asegura que todo dentro del formulario esté centrado */
+   /* Asegura que todo dentro del formulario esté centrado */
 }
 
 .label {
