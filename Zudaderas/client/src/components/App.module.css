@@ -6,11 +6,10 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif; /* Ajusta la fuente a tu preferencia */
+    font-family: "Arial", sans-serif; /* Ajusta la fuente a tu preferencia */
     line-height: 1.6;
     margin: 20px;
     background-color: rgb(155, 155, 155);
-
 }
 
 .container {
@@ -21,7 +20,9 @@ body {
 
 /* Media queries para responsividad */
 @media (max-width: 768px) {
-    .container, .header, .footer {
+    .container,
+    .header,
+    .footer {
         padding: 10px;
     }
 }
