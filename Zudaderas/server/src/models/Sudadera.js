@@ -13,13 +13,13 @@ const sudaderaSchema = new Schema({
     foto: String, // Ruta de la imagen de la sudadera
     fotosSecundarias: [String], // Array de rutas de imágenes secundarias de la sudadera
     capucha: Boolean, // Indicador si la sudadera tiene capucha o no
-    precio: Number, // Precio de la sudadera
+    precio: { type: Number, min: 0 }, // Precio de la sudadera Establece un valor mínimo de 0era
     descripcion: String, // Descripción de la sudadera
-    stock: Number, // Cantidad disponible en stock de la sudadera
+    stock: { type: Number, min: 0 }, // Establece un valor mínimo de 0
     valoraciones: [
         {
             // Lista de valoraciones de la sudadera
-            usuario: String, // Nombre de usuario que realizó la valoración
+            usuario: { type: Schema.Types.ObjectId, ref: "User" }, // Referencia al modelo de usuario
             comentario: String, // Comentario asociado a la valoración
             calificacion: Number, // Calificación otorgada a la sudadera
         },

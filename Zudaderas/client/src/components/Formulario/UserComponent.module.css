@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Nunito:wght@200&display=swap');
 /* Estilos para el contenedor principal */
 /* Alinea el contenedor principal al centro verticalmente y horizontalmente */
 .container {
@@ -35,39 +36,52 @@
 input:focus {
     outline: none; /* Elimina el borde al enfocar el input */
 }
+
+.BotonesDiv{
+
+        display: flex;
+        justify-content: space-between;
+
+}
+.BotonesDiv .button {
+    margin-right: 10px; /* Agrega espacio entre los botones */
+}
 /* Estilos para los botones */
 .button {
-    padding: 8px 1px; /* Reducir el padding para hacer el botón más pequeño */
+    padding: 8px 10px; /* Reducir el padding para hacer el botón más pequeño */
     border: none;
     border-radius: 4px;
     background-color: #aeaeae;
+    font-family: "Anta", sans-serif;
     color: #333;
-        cursor: pointer;
+    cursor: pointer;
     font-size: 16px;
     width: 140px; /* Ancho del botón */
+
 }
 
 /* Estilos para el botón secundario */
 .buttonSecondary {
-    background-color: #aeaeae;
-    color: #333;
+    background-color: #c54b4b;
+    font-family: "Anta", sans-serif;
+    color: #000000;
     border: none;
     padding: 8px 5px; /* Reducir el padding para hacer el botón más pequeño */
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
-    width: 130px; /* Ancho del botón secundario */
+    width: 140px; /* Ancho del botón secundario */
 }
 
 /* Efecto hover para los botones */
 .button:hover {
     opacity: 0.8; /* Reduce la opacidad al pasar el ratón */
     color: #000000; /* Cambia el color del texto al pasar el ratón */
-
 }
 
 .buttonSecondary:hover {
-    opacity: 0.8; /* Reduce la opacidad al pasar el ratón */    border-color: #aaa; /* Cambia el color del borde al pasar el ratón */
+    opacity: 0.8; /* Reduce la opacidad al pasar el ratón */
+    border-color: #aaa; /* Cambia el color del borde al pasar el ratón */
     color: #000000; /* Cambia el color del texto al pasar el ratón */
 }
 
@@ -81,11 +95,30 @@ input:focus {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    background-color: #333333;
     align-items: center; /* Centra los elementos horizontalmente */
 }
 
 /* Ajustes adicionales para el texto y otros elementos dentro de userInfoContainer */
 .userInfoText {
     text-align: center; /* Centra el texto dentro de su contenedor */
+}
+
+.FotoPerfil{
+    border-radius: 200px;
+    border: #000000 2px solid;
+    user-select: none; /* Evita la selección de texto */
+    pointer-events: none; /* Evita eventos de puntero */
+    width: 200px;
+    height: 200px;
+}
+
+
+
+.Texto {
+    font-family: "Anta", sans-serif;
+    font-style: normal;
+    color: white;
+    user-select: none;
+    pointer-events: none;
 }

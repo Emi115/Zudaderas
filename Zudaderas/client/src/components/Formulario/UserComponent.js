@@ -57,11 +57,20 @@ function UserComponent() {
         }
     };
 
+    //Formulario de registro
     const handleRegisterSubmit = async (e) => {
         e.preventDefault();
+
+        console.log("Enviando datos al servidor:", userData); // Aquí agregas el console.log
+
         try {
-            // El resto de tu lógica de registro...
-            alert("Usuario registrado , ahora puedes iniciar sesion");
+            const response = await axios.post(
+                "http://localhost:3000/users",
+                userData
+            );
+            console.log("Success:", response.data);
+            alert("Usuario registrado con éxito!");
+            // Limpiar el formulario aquí
             setUserData({
                 registerUsername: "",
                 email: "",
@@ -79,10 +88,9 @@ function UserComponent() {
                 password: "",
             });
             setView("login");
-            // window.location.reload(); // Considera evitar recargar la página para una experiencia de usuario más fluida.
         } catch (error) {
-            alert("Eror algo ha petado");
-            console.error(error);
+            console.error("Error:", error);
+            alert("Error al registrar usuario");
         }
     };
 
@@ -94,16 +102,23 @@ function UserComponent() {
                 "http://localhost:3000/login",
                 userCredentials
             );
-            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("token", response.data.token); // Asumiendo que el token también se envía como parte de la respuesta
+
+            // Restablecer userCredentials a sus valores iniciales
             setUserCredentials({
                 username: "",
                 password: "",
             });
+
+            // Actualizar el estado para reflejar que el usuario ha iniciado sesión
             setIsAuthenticated(true);
             setView("viewUser");
+            window.location.reload(); // Considera evitar recargar la página para una experiencia de usuario más fluida.
+
+            // Opcionalmente, puedes buscar más información del usuario aquí si es necesario
             fetchUserInfo(response.data.token);
         } catch (error) {
-            alert("Error Haciendo login ");
+            alert("Error haciendo login");
             console.error(error);
         }
     };
@@ -115,6 +130,7 @@ function UserComponent() {
                     Authorization: `Bearer ${token}`,
                 },
             });
+            localStorage.setItem("userRole", response.data.role);
             setUserInfo(response.data); // Actualiza la información del usuario autenticado.
             setUserData(response.data); // Prepara los datos para la edición.
         } catch (error) {
@@ -156,8 +172,35 @@ function UserComponent() {
     const handleLogout = () => {
         // Cierra la sesión del usuario.
         localStorage.removeItem("token");
+        //Cierra la sesion dek¡l UserRole por si es admin
+        localStorage.removeItem("userRole");
+
+        // Restablece los estados a sus valores predeterminados
         setIsAuthenticated(false);
         setView("login"); // Cambia la vista al formulario de inicio de sesión.
+
+        // Restablece los estados de los datos del formulario
+        setUserCredentials({
+            username: "",
+            password: "",
+        });
+
+        // Restablece los estados de los datos del usuario
+        setUserData({
+            registerUsername: "",
+            email: "",
+            phoneNumber: "",
+            registerPassword: "",
+            address: {
+                street: "",
+                city: "",
+                state: "",
+                zip: "",
+            },
+        });
+        window.location.reload(); // Considera evitar recargar la página para una experiencia de usuario más fluida.
+
+        // Si tienes otros estados que necesitan ser limpiados, asegúrate de restablecerlos aquí.
     };
 
     // Componentes de la interfaz de usuario para el formulario de inicio de sesión, registro y visualización de la información del usuario.
@@ -167,7 +210,7 @@ function UserComponent() {
                 name="username"
                 value={userCredentials.username}
                 onChange={handleChange}
-                placeholder="Username"
+                placeholder="Usuario"
                 className={styles.input}
             />
             <input
@@ -175,35 +218,35 @@ function UserComponent() {
                 name="password"
                 value={userCredentials.password}
                 onChange={handleChange}
-                placeholder="Password"
+                placeholder="Contraseña"
                 className={styles.input}
             />
             <button type="submit" className={styles.button}>
-                Login
+                Iniciar Sesion
             </button>
+
             <button
                 type="button"
                 onClick={() => setView("register")}
                 className={`${styles.button} ${styles.buttonSecondary}`}
             >
-                Register
+                Registrarse
             </button>
         </form>
     );
 
     const RegisterForm = (
         <form onSubmit={handleRegisterSubmit} className={styles.form}>
-            {/* Campo para el nombre de usuario */}
             <input
                 type="text"
-                name="username"
+                name="registerUsername"
                 value={userData.username}
                 onChange={handleChange}
-                placeholder="Username"
+                placeholder="Nombre del Usuario"
                 className={styles.input}
                 required
             />
-            {/* Campo para el correo electrónico */}
+
             <input
                 type="email"
                 name="email"
@@ -213,26 +256,26 @@ function UserComponent() {
                 className={styles.input}
                 required
             />
-            {/* Campo para el teléfono */}
+
             <input
                 type="tel"
                 name="phoneNumber"
                 value={userData.phoneNumber}
                 onChange={handleChange}
-                placeholder="Phone Number"
+                placeholder="Numero de telefono"
                 className={styles.input}
             />
-            {/* Campo para la contraseña */}
+
             <input
                 type="password"
-                name="password"
+                name="registerPassword"
                 value={userData.password}
                 onChange={handleChange}
-                placeholder="Password"
+                placeholder="Contraseña"
                 className={styles.input}
                 required
             />
-            {/* Campo para la URL de la foto de perfil */}
+
             <input
                 type="text"
                 name="profilePicture"
@@ -258,8 +301,6 @@ function UserComponent() {
         <div className={styles.userInfoContainer}>
             {isEditing ? (
                 <form onSubmit={handleSaveUserInfo} className={styles.form}>
-                    {/* Campos editables para cada propiedad del usuario */}
-
                     <input
                         type="email"
                         placeholder="Email"
@@ -365,44 +406,63 @@ function UserComponent() {
                 <>
                     {userInfo ? (
                         <div>
-                            <p>Username: {userInfo.username}</p>
-                            <p>Email: {userInfo.email}</p>
-                            <p>Phone Number: {userInfo.phoneNumber}</p>
                             {userInfo.profilePicture && (
                                 <p>
-                                    Profile Picture:
                                     <img
+                                        className={styles.FotoPerfil}
                                         src={`/images/${userInfo.profilePicture}`} // Usa la ruta dinámica basada en userInfo.profilePicture
                                         alt="Profile"
-                                        className={styles.profilePicture}
+                                        draggable="false"
                                     />
                                 </p>
                             )}
+                            <p className={styles.Texto}>
+                                Nombre: {userInfo.username}
+                            </p>
+                            <p className={styles.Texto}>
+                                Gmail: {userInfo.email}
+                            </p>
+                            <p className={styles.Texto}>
+                                Numero de Telefono: {userInfo.phoneNumber}
+                            </p>
+
                             <div>
-                                <p>Address:</p>
-                                <p>Street: {userInfo.address?.street}</p>
-                                <p>City: {userInfo.address?.city}</p>
-                                <p>State: {userInfo.address?.state}</p>
-                                <p>Zip: {userInfo.address?.zip}</p>
+                                <p className={styles.Texto}>
+                                    Calle: {userInfo.address?.street}
+                                </p>
+                                <p className={styles.Texto}>
+                                    Ciudad: {userInfo.address?.city}
+                                </p>
+                                <p className={styles.Texto}>
+                                    Provincia: {userInfo.address?.state}
+                                </p>
+                                <p className={styles.Texto}>
+                                    Codigo Postal: {userInfo.address?.zip}
+                                </p>
                             </div>
                         </div>
                     ) : (
-                        <p>Loading user information...</p>
+                        <p className={styles.Texto}>
+                            Loading user information...
+                        </p>
                     )}
-                    <button
-                        onClick={handleEditUserInfo}
-                        className={styles.button}
-                    >
-                        Edit
-                    </button>
+                    <div className={styles.BotonesDiv}>
+                        <button
+                            onClick={handleEditUserInfo}
+                            className={styles.button}
+                        >
+                            Editar Perfil
+                        </button>
+
+                        <button
+                            onClick={handleLogout}
+                            className={`${styles.button} ${styles.buttonSecondary}`}
+                        >
+                            Cerrar Sesion
+                        </button>
+                    </div>
                 </>
             )}
-            <button
-                onClick={handleLogout}
-                className={`${styles.button} ${styles.buttonSecondary}`}
-            >
-                Logout
-            </button>
         </div>
     );
 

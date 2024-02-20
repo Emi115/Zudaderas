@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #7e7e7e; /* Un color de fondo más oscuro */
+    background-color: #7e7e7e;
     display: flex;
     justify-content: left; /* Alinea los elementos a la izquierda */
     padding: 10px 20px;
@@ -16,6 +16,6 @@
 }
 
 .navLink:hover {
-    background-color: #2a2a2a; /* Un azul más claro para el hover */
+    background-color: #2a2a2a;
     border-radius: 5px; /* Bordes redondeados */
 }

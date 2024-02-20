@@ -9,6 +9,7 @@ const userSchema = new Schema(
         phoneNumber: { type: Number, unique: true },
         password: { type: String, required: true },
         profilePicture: { type: String, default: "" }, // Campo para la URL de la imagen de perfil , haber como hago para que se cambien.
+        role: { type: String, default: "user" },
         address: {
             //campos de direccion para el formulario
             street: { type: String, default: "" },
