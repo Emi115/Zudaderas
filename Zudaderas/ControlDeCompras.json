@@ -1,0 +1,175 @@
+{
+  "info": {
+    "_postman_id": "",
+    "name": "Compras",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Añadir Ítem al Carrito",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": \"(userId)\",\n  \"sudaderaId\": \"(sudaderaId)\",\n  \"cantidad\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/compras/addItem",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["compras", "addItem"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener Carrito de Compras",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/compras/(userId)",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["compras", "(userId)"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Actualizar Cantidad Ítem",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": \"(userId)\",\n  \"sudaderaId\": \"(sudaderaId)\",\n  \"cantidad\": 2\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/compras/updateItem",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["compras", "updateItem"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Eliminar Ítem del Carrito",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": \"(userId)\",\n  \"sudaderaId\": \"(sudaderaId)\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/compras/removeItem",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["compras", "removeItem"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Finalizar Compra",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": \"(userId)\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/compras/finalizarCompra",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["compras", "finalizarCompra"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener Compras de Usuario",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/compras/compras/(userId)",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["compras", "compras", "(userId)"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modificar Compra",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"compraId\": \"(compraId)\",\n  \"nuevoEstado\": \"Entregado\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/compras/modificarCompra",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["compras", "modificarCompra"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Eliminar Compra",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/compras/eliminarCompra/(compraId)",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["compras", "eliminarCompra", "(compraId)"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
+
