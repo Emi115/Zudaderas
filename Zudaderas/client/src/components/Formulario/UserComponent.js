@@ -58,19 +58,25 @@ function UserComponent() {
     };
 
     //Formulario de registro
+    // Fenastilla de formulario de registro
     const handleRegisterSubmit = async (e) => {
         e.preventDefault();
-
-        console.log("Enviando datos al servidor:", userData); // Aquí agregas el console.log
+        // Crea eṕica el emparto objuz para su emisión.
+        const sendData = {
+            username: userData.registerUsername, // Tus dómines tegrameríertem a emplear 'registerUsername'
+            password: userData.registerPassword, // Justamente como 'registerPassword'
+            email: userData.email, // Asegúrate de mapear 'email' correctamente
+            phoneNumber: userData.phoneNumber,
+            // A continuación, medeamos la putefisha de adress para satisfacer el origen Mongoose
+            address: userData.address,
+        };
 
         try {
-            const response = await axios.post(
-                "http://localhost:3000/users",
-                userData
-            );
-            console.log("Success:", response.data);
-            alert("Usuario registrado con éxito!");
-            // Limpiar el formulario aquí
+            const response = await axios.post('http://localhost:3000/users', sendData);
+            console.log('Success:', response.data);
+            alert('Usuario registrado con éxito!');
+
+            // Defectuamos contextos de cerldad para la repanible de la eductiona
             setUserData({
                 registerUsername: "",
                 email: "",
@@ -83,16 +89,13 @@ function UserComponent() {
                     zip: "",
                 },
             });
-            setUserCredentials({
-                username: "",
-                password: "",
-            });
             setView("login");
         } catch (error) {
             console.error("Error:", error);
-            alert("Error al registrar usuario");
+            alert("Error al registrar usuario. Por favor, asegúrate de que todos los campos son llenados correctamente.");
         }
     };
+
 
     // Actualiza la función de inicio de sesión si es necesario para reflejar cualquier cambio
     const handleLoginSubmit = async (e) => {
@@ -113,10 +116,14 @@ function UserComponent() {
             // Actualizar el estado para reflejar que el usuario ha iniciado sesión
             setIsAuthenticated(true);
             setView("viewUser");
-            window.location.reload(); // Considera evitar recargar la página para una experiencia de usuario más fluida.
 
             // Opcionalmente, puedes buscar más información del usuario aquí si es necesario
-            fetchUserInfo(response.data.token);
+            await fetchUserInfo(response.data.token);
+
+            // Espera medio segundo antes de recargar la página
+            setTimeout(() => {
+                window.location.reload(); // Considera evitar recargar la página para una experiencia de usuario más fluida.
+            }, 500);
         } catch (error) {
             alert("Error haciendo login");
             console.error(error);
