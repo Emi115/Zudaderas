@@ -8,7 +8,8 @@ import {
     deleteSudadera,
     searchSudaderas,
 } from "../controllers/sudadera-controller.js";
-
+// Importar la función de autorización desde el middleware de seguridad
+import { authorize } from "../middlewares/seguridad-middleware.js";
 // Creamos una instancia de Router de Express
 const router = Router();
 
@@ -18,13 +19,13 @@ const router = Router();
 router.get("/", getSudaderas);
 
 // Crear una nueva sudadera
-router.post("/", createSudadera);
+router.post("/", authorize, createSudadera);
 
 // Actualizar una sudadera existente por su ID
 router.patch("/:id", updateSudadera);
 
 // Eliminar una sudadera por su ID
-router.delete("/:id", deleteSudadera);
+router.delete("/:id",authorize, deleteSudadera);
 
 // Buscar sudaderas basadas en criterios específicos
 router.get("/search", searchSudaderas);

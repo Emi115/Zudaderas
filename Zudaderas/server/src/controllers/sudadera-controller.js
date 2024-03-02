@@ -5,20 +5,28 @@ import Sudadera from "../models/Sudadera.js"; // Importa el modelo de Sudadera
 // Función para crear una nueva sudadera
 export async function createSudadera(req, res, next) {
     try {
-        // Crea una nueva instancia de Sudadera con los datos enviados en el cuerpo de la solicitud
-        const sudadera = new Sudadera(req.body);
+        // Busca si ya existe una sudadera con los mismos detalles
+        const existingSudadera = await Sudadera.findOne(req.body);
 
-        // Registra en el log los datos recibidos
-        Logger.warn(JSON.stringify(req.body));
+        if (existingSudadera) {
+            // Si la sudadera ya existe, devuelve un mensaje de error indicando que la sudadera ya existe
+            return res.status(400).json({ message: "Esta sudadera ya existe. Por favor, actualice su stock o cree otra." });
+        } else {
+            // Si la sudadera no existe, crea una nueva instancia de Sudadera
+            const sudadera = new Sudadera(req.body);
 
-        // Guarda la sudadera en la base de datos
-        const createdSudadera = await sudadera.save();
+            // Registra en el log los datos recibidos
+            Logger.warn(JSON.stringify(req.body));
 
-        // Registra en el log la sudadera creada
-        Logger.warn(JSON.stringify(createdSudadera));
+            // Guarda la sudadera en la base de datos
+            const createdSudadera = await sudadera.save();
 
-        // Envía una respuesta con estado 201 (Created) y los datos de la sudadera creada
-        return res.status(201).send(createdSudadera);
+            // Registra en el log la sudadera creada
+            Logger.warn(JSON.stringify(createdSudadera));
+
+            // Envía una respuesta con estado 201 (Created) y los datos de la sudadera creada
+            return res.status(201).send(createdSudadera);
+        }
     } catch (error) {
         // Maneja cualquier error que pueda ocurrir
         next(error);

@@ -19,7 +19,7 @@ export async function login(req, res, next) {
             // Comparamos la contraseña proporcionada con la almacenada en la base de datos
             if (checkHash(password, user.password)) {
                 // Si las credenciales son válidas, creamos un token de autenticación JWT
-                const userInfo = { id: user._id, username: user.username };
+                const userInfo = { id: user._id, username: user.username, role: user.role };
                 const jwtConfig = { expiresIn: 60 * 60 }; // Configuración del token: expira en 1 hora
                 const token = jwt.sign(
                     userInfo,

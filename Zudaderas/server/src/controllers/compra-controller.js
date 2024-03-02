@@ -6,21 +6,29 @@ import Logger from "../utils/logger.js";
 
 // Añadir un ítem al carrito de compras
 export async function addItemAlCarrito(req, res) {
-    const { userId, sudaderaId, cantidad } = req.body;
+    const { sudaderaId, cantidad } = req.body;
 
+    // Verificar si la sudaderaId existe
     try {
-        // Recuperar el nombre de usuario utilizando el userId
-        const usuario = await User.findById(userId);
+        const sudadera = await Sudadera.findById(sudaderaId);
+        if (!sudadera) {
+            return res
+                .status(404)
+                .json({ message: "La sudadera con esta ID no existe." });
+        }
+
+        // Usar req.user.username para obtener la información del usuario
+        const usuario = await User.findOne({ username: req.user.username });
         if (!usuario) {
             return res.status(404).json({ message: "Usuario no encontrado." });
         }
 
-        let compra = await Compra.findOne({ user: userId });
+        let compra = await Compra.findOne({ user: usuario._id });
 
         if (!compra) {
             compra = new Compra({
-                user: userId,
-                nombreUsuario: usuario.username, // Incluye el nombre de usuario
+                user: usuario._id,
+                nombreUsuario: usuario.username, // Usar directamente el nombre de usuario del token
                 items: [{ item: sudaderaId, cantidad }],
             });
         } else {
@@ -32,8 +40,7 @@ export async function addItemAlCarrito(req, res) {
             } else {
                 compra.items.push({ item: sudaderaId, cantidad });
             }
-            // Asegúrate de actualizar el nombre de usuario en cada operación por si ha cambiado
-            compra.nombreUsuario = usuario.username;
+            // El nombre de usuario ya está asegurado por el token, así que no necesitas actualizarlo aquí
         }
 
         await compra.save();
@@ -44,31 +51,41 @@ export async function addItemAlCarrito(req, res) {
     }
 }
 
-// Eliminar un ítem del carrito
-export async function eliminarItemDelCarrito(req, res) {
-    const { userId, sudaderaId } = req.body;
+// Obtener el carrito de compras de un usuario
+// Obtener el carrito de compras de un usuario
+export async function obtenerCarrito(req, res) {
+    // Utilizar el userId del token de autenticación
+    const userId = req.user.id;
 
     try {
-        const compra = await Compra.findOne({ user: userId });
-
+        const compra = await Compra.findOne({ user: userId }).populate(
+            "items.item"
+        );
         if (compra) {
-            compra.items = compra.items.filter(
-                (item) => !item.item.equals(sudaderaId)
-            );
-            await compra.save();
+            // Calcula el precio total de los ítems en el carrito
+            let precioTotal = 0;
+            for (const item of compra.items) {
+                precioTotal += item.cantidad * item.item.precio;
+            }
+
+            // Actualiza el precioTotal en el objeto de respuesta sin modificar la base de datos
+            compra.precioTotal = precioTotal;
+
             res.status(200).json(compra);
         } else {
             res.status(404).json({ message: "Carrito no encontrado" });
         }
     } catch (error) {
-        Logger.error("Error al eliminar item del carrito: ", error);
-        res.status(500).json({ message: "Error al eliminar item del carrito" });
+        Logger.error("Error al obtener el carrito: ", error);
+        res.status(500).json({ message: "Error al obtener el carrito" });
     }
 }
 
 // Actualizar la cantidad de un ítem en el carrito
 export async function actualizarCantidadItem(req, res) {
-    const { userId, sudaderaId, cantidad } = req.body;
+    // Utilizar el userId del token de autenticación
+    const userId = req.user.id;
+    const { sudaderaId, cantidad } = req.body;
 
     try {
         const compra = await Compra.findOne({ user: userId });
@@ -97,32 +114,27 @@ export async function actualizarCantidadItem(req, res) {
     }
 }
 
-// Obtener el carrito de compras de un usuario
-export async function obtenerCarrito(req, res) {
-    const { userId } = req.params; // Asumiendo que el ID del usuario viene como parámetro de la URL
+// Eliminar un ítem del carrito
+export async function eliminarItemDelCarrito(req, res) {
+    // Utilizar el userId del token de autenticación
+    const userId = req.user.id;
+    const { sudaderaId } = req.body;
 
     try {
-        const compra = await Compra.findOne({ user: userId }).populate(
-            "items.item"
-        );
+        const compra = await Compra.findOne({ user: userId });
+
         if (compra) {
-            // Calcula el precio total de los ítems en el carrito
-            let precioTotal = 0;
-            for (const item of compra.items) {
-                // Asume que el precio está almacenado en el documento referenciado de la sudadera
-                precioTotal += item.cantidad * item.item.precio;
-            }
-
-            // Actualiza el precioTotal en el objeto de respuesta sin modificar la base de datos
-            compra.precioTotal = precioTotal;
-
+            compra.items = compra.items.filter(
+                (item) => !item.item.equals(sudaderaId)
+            );
+            await compra.save();
             res.status(200).json(compra);
         } else {
             res.status(404).json({ message: "Carrito no encontrado" });
         }
     } catch (error) {
-        Logger.error("Error al obtener el carrito: ", error);
-        res.status(500).json({ message: "Error al obtener el carrito" });
+        Logger.error("Error al eliminar item del carrito: ", error);
+        res.status(500).json({ message: "Error al eliminar item del carrito" });
     }
 }
 
