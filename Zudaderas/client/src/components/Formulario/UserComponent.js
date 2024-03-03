@@ -72,9 +72,12 @@ function UserComponent() {
         };
 
         try {
-            const response = await axios.post('http://localhost:3000/users', sendData);
-            console.log('Success:', response.data);
-            alert('Usuario registrado con éxito!');
+            const response = await axios.post(
+                "http://localhost:3000/users",
+                sendData
+            );
+            console.log("Success:", response.data);
+            alert("Usuario registrado con éxito!");
 
             // Defectuamos contextos de cerldad para la repanible de la eductiona
             setUserData({
@@ -92,10 +95,11 @@ function UserComponent() {
             setView("login");
         } catch (error) {
             console.error("Error:", error);
-            alert("Error al registrar usuario. Por favor, asegúrate de que todos los campos son llenados correctamente.");
+            alert(
+                "Error al registrar usuario. Por favor, asegúrate de que todos los campos son llenados correctamente."
+            );
         }
     };
-
 
     // Actualiza la función de inicio de sesión si es necesario para reflejar cualquier cambio
     const handleLoginSubmit = async (e) => {

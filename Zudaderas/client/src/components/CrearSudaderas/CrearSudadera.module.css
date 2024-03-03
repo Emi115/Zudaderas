@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Anta&display=swap");
+
 .tuClaseFormulario {
     background: #222;
     color: #fff;
@@ -9,13 +11,14 @@
     margin: 0 auto; /* Centra el formulario horizontalmente */
     display: flex;
     flex-direction: column;
-   /* Asegura que todo dentro del formulario esté centrado */
+    font-family: "Anta", sans-serif; /* Aplica la fuente Anta */
 }
 
 .label {
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
+    font-family: "Anta", sans-serif; /* Aplica la fuente Anta */
 }
 
 .input,
@@ -30,17 +33,18 @@
     color: #ddd;
     box-sizing: border-box;
     outline-color: #666; /* Cambia el color del borde al enfocarse */
+    font-family: "Anta", sans-serif; /* Aplica la fuente Anta */
 }
 
 /* Elimina las flechas en los inputs de tipo number */
 /* Firefox */
-input[type='number'] {
+input[type="number"] {
     -moz-appearance: textfield;
 }
 
 /* Chrome, Safari, Edge, Opera */
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
@@ -55,6 +59,7 @@ input[type='number']::-webkit-outer-spin-button {
     border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
+    font-family: "Anta", sans-serif; /* Aplica la fuente Anta */
 }
 
 /* Estilos adicionales para :focus en inputs para reemplazar el borde azul predeterminado */
@@ -63,6 +68,7 @@ input[type='number']::-webkit-outer-spin-button {
 .boton:focus {
     border: 1px solid #666; /* Cambia el borde a un gris más oscuro */
     outline: none; /* Elimina el outline predeterminado */
+    font-family: "Anta", sans-serif; /* Asegura que la fuente Anta se aplique en el foco */
 }
 
 /* Añade tus estilos de responsividad y otros estados (:hover, :focus) aquí */

@@ -13,7 +13,7 @@ function Navbar() {
                 Inicio
             </Link>
             <Link to="/about" className={styles.navLink}>
-                Sobre mí
+                Sobre Nosotros
             </Link>
             {userRole === "admin" && (
                 <Link to="/crearsudaderas" className={styles.navLink}>
@@ -24,7 +24,7 @@ function Navbar() {
                 Login/Register
             </Link>
             <Link to="/" className={styles.navLink}>
-                Mas Buscados
+                Categorias
             </Link>
         </nav>
     );

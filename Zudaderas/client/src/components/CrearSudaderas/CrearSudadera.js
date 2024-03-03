@@ -2,8 +2,6 @@
 import React, { useState, useContext } from "react"; // Importar useContext si estás usando un contexto global para el token
 import styles from "./CrearSudadera.module.css";
 
-// Contexto global (si lo usas para almacenar el token)
-// import { AuthContext } from '../path/to/authContext';
 
 function CrearSudadera() {
     const [formData, setFormData] = useState({
@@ -20,10 +18,6 @@ function CrearSudadera() {
     });
     const [mensaje, setMensaje] = useState("");
 
-    // Usar el contexto global para obtener el token si es aplicable
-    // const { token } = useContext(AuthContext);
-
-    // Alternativamente, obtener el token de localStorage o sessionStorage
     const token = localStorage.getItem("token"); // O sessionStorage según lo que uses
 
     const handleChange = (e) => {

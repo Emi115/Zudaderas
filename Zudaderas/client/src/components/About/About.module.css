@@ -1,9 +1,31 @@
-.about {
-    background-color: #e7e7e7;
-    padding: 20px;
-    margin-top: 20px;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Nunito:wght@200&display=swap');
 
-  .aboutContent {
-    color: #666;
-  }
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Anta', sans-serif; /* Aplica la fuente Anta al contenedor */
+}
+
+.aboutTitle {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.starWarsText p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #34495e;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.starWarsText strong {
+  color: #e74c3c;
+}
