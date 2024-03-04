@@ -16,7 +16,6 @@ export async function addItemAlCarrito(req, res) {
                 .status(404)
                 .json({ message: "La sudadera con esta ID no existe." });
         }
-
         // Usar req.user.username para obtener la información del usuario
         const usuario = await User.findOne({ username: req.user.username });
         if (!usuario) {

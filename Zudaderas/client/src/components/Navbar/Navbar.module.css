@@ -1,9 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Anta&display=swap");
 .navbar {
     background-color: #7e7e7e;
     display: flex;
     justify-content: left; /* Alinea los elementos a la izquierda */
     padding: 10px 20px;
     border-radius: 10px;
+    font-family: "Anta", sans-serif; /* Aplicamos la fuente */
 }
 
 .navLink {
@@ -13,6 +15,7 @@
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
+    font-family: "Anta", sans-serif; /* También podrías querer aplicarla específicamente a los enlaces */
 }
 
 .navLink:hover {

@@ -71,14 +71,16 @@ function HomePage() {
                             alt={sudadera.nombre}
                             className={styles.productoImagen}
                         />
-                        <h3>{sudadera.nombre}</h3>
-                        <p>${sudadera.precio}</p>
-                        <button
-                            onClick={() => abrirModal(sudadera)}
-                            className={styles.verMasBoton}
-                        >
-                            Ver más
-                        </button>
+
+                            <h3>{sudadera.nombre}</h3>
+                            <p>{sudadera.precio}€</p>
+                            <button
+                                onClick={() => abrirModal(sudadera)}
+                                className={styles.verMasBoton}
+                            >
+                               Precio y detalles
+                            </button>
+
                     </div>
                 ))}
             </div>

@@ -9,52 +9,14 @@
     font-family: "Anta", sans-serif;
 }
 
-.productosContainer {
-    width: 80%; /* O el ancho que prefieras */
-    margin-top: auto;
-    margin-bottom: auto;
-    /* Esto centrará el contenedor de productos en el espacio restante de la página */
-    font-family: "Anta", sans-serif;
-}
 
-/* Estilos generales para cartas de productos */
-.producto {
-    border: 1px solid #ddd; /* Borde sutil para definir las cartas */
-    border-radius: 8px; /* Bordes redondeados para suavizar la apariencia */
-    padding: 20px; /* Espaciado interno para no pegar el contenido a los bordes */
-    margin: 10px; /* Margen entre cartas para evitar que se toquen */
-    display: flex; /* Para organizar el contenido de la carta */
-    flex-direction: column; /* Alineación vertical del contenido */
-    align-items: center; /* Centrar contenido horizontalmente */
-    background-color: #fff; /* Fondo claro para las cartas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidad */
-}
-
-/* Estilo para las imágenes de productos para asegurar que no sean demasiado grandes */
-.producto img {
-    max-width: 100%; /* Limita el ancho de la imagen al de la carta */
-    height: auto; /* Mantiene la proporción de la imagen */
-    border-radius: 4px; /* Bordes redondeados para las imágenes */
-    margin-bottom: 15px; /* Espaciado debajo de la imagen */
-}
-
-/* Continuación de los estilos anteriores */
-
-.productosContainer {
-    width: 80%; /* O el ancho que prefieras */
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: flex; /* Usamos flexbox para organizar las tarjetas */
-    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en la siguiente línea */
-    justify-content: space-around; /* Espacia las tarjetas uniformemente */
-    font-family: "Anta", sans-serif;
-}
 
 .producto {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 10px;
-    margin: 10px;
+
+    margin: 15px;
     flex-basis: 22%; /* Establece una base para el tamaño de las tarjetas para que cuatro quepan en una fila */
     display: flex;
     flex-direction: column;
@@ -62,15 +24,37 @@
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s; /* Añade una transición suave para el efecto de hover */
+
 }
 
 /* Estilo para imágenes para asegurar que se ajusten dentro de las tarjetas más pequeñas */
 .producto img {
-    max-width: 100px; /* Ajusta el tamaño de la imagen */
-    max-height: 100px;
+    max-width: 300px; /* Ajusta el tamaño de la imagen */
+    max-height: 300px;
     border-radius: 4px;
     margin-bottom: 8px;
 }
+.producto h3{
+    padding-top: 10px;
+    margin: 5px;
+}
+.producto p{
+    margin: 10px;
+}
+/* Estilo de botones */
+.producto button{
+    background-color: #3498db; /* Un azul más suave */
+    border-radius: 50px; /* Redondeo moderado */
+    border: 2px solid transparent; /* Borde transparente que puede cambiar al interactuar */
+    color: #ffffff; /* Mantenemos el color blanco para el texto */
+    font-size: 14px; /* Tamaño de letra más grande para mejor legibilidad */
+    font-weight: bold; /* Fuente en negrita para destacar */
+    padding: 7px 10px; /* Más relleno para un botón más grande y cómodo */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar sobre el botón para indicar que es clickeable */
+    transition: background-color 0.3s, transform 0.2s; /* Transición suave para el color de fondo y transformación */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar profundidad */
+}
+
 
 /* Añade un efecto de hover a las tarjetas para mejorar la interactividad */
 .producto:hover {
@@ -116,7 +100,7 @@
     margin-right: -10px; /* Ajusta según sea necesario para alinear correctamente */
     margin-top: -10px; /* Ajusta según sea necesario */
     border-radius: 50%; /* Hace el botón redondo */
-    background-color: #ccc; /* Color de fondo para hacerlo más visible */
+    background-color: #5c5c5c; /* Color de fondo para hacerlo más visible */
     color: white; /* Color del texto */
     display: inline-flex; /* Usa flex para centrar el contenido */
     justify-content: center; /* Centra el contenido horizontalmente */
@@ -159,11 +143,21 @@
 }
 
 .modalInfo {
-    flex: 2;
+    flex: 1.5;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    margin: 0px;
+    justify-content: space-around; /* Alinea el contenido para empujar el botón hacia abajo */
+
 }
+
+.modalInfo p {
+    margin-top: 0; /* Reduce el margen superior para juntarlos más */
+    margin-bottom: 0; /* Ajusta este valor según necesites para controlar el espacio entre párrafos */
+    text-align: justify; /* Opcional: Alinea el texto de manera justificada para un inicio uniforme y final */
+    margin-left: 150px; /* Establece un margen izquierdo uniforme para alinearlos en el mismo eje Y */
+}
+
 
 .modalInfo button {
     padding: 8px 15px; /* Reducimos el padding para hacer el botón más pequeño */
@@ -175,7 +169,7 @@
     cursor: pointer; /* Indica que es clickeable */
     margin-top: 20px; /* Mantenemos el margen superior */
     transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
-    width: 100px;
+    width: 150px;
     align-self: center;
 }
 
