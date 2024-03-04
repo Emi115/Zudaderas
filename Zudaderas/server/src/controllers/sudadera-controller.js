@@ -5,12 +5,19 @@ import Sudadera from "../models/Sudadera.js"; // Importa el modelo de Sudadera
 // Función para crear una nueva sudadera
 export async function createSudadera(req, res, next) {
     try {
-        // Busca si ya existe una sudadera con los mismos detalles
-        const existingSudadera = await Sudadera.findOne(req.body);
+        // Busca si ya existe una sudadera con el mismo nombre
+        const existingSudadera = await Sudadera.findOne({
+            nombre: req.body.nombre,
+        });
 
         if (existingSudadera) {
-            // Si la sudadera ya existe, devuelve un mensaje de error indicando que la sudadera ya existe
-            return res.status(400).json({ message: "Esta sudadera ya existe. Por favor, actualice su stock o cree otra." });
+            // Si ya existe una sudadera con el mismo nombre, devuelve un mensaje de error
+            return res
+                .status(400)
+                .json({
+                    message:
+                        "Ya existe una sudadera con este nombre. Por favor, elija otro nombre.",
+                });
         } else {
             // Si la sudadera no existe, crea una nueva instancia de Sudadera
             const sudadera = new Sudadera(req.body);
@@ -100,18 +107,57 @@ export async function searchSudaderas(req, res, next) {
     }
 }
 
-// Función para obtener todas las sudaderas paginadas
 export async function getSudaderas(req, res, next) {
     try {
-        const page = parseInt(req.query.page) || 1; // Página actual, por defecto es 1
-        const pageSize = 8; // Tamaño de la página ahora es 8
-        const skip = (page - 1) * pageSize; // Cantidad de documentos para omitir
+        let page = parseInt(req.query.page) || 1; // Asume la página 1 como predeterminada si no se especifica
 
-        // Busca las sudaderas en la base de datos paginadas
+        // Asegura que la página solicitada no sea menor que 1
+        if (page < 1) {
+            return res
+                .status(400)
+                .send({
+                    message:
+                        "La página solicitada no es válida. Por favor, selecciona una página mayor o igual a 1.",
+                });
+        }
+
+        const pageSize = 8; // Define el tamaño de cada página de sudaderas
+
+        // Calcula el número de documentos a omitir para la paginación
+        const skip = (page - 1) * pageSize;
+
+        // Obtiene el total de documentos para determinar si la página solicitada existe
+        const total = await Sudadera.countDocuments();
+
+        // Calcula el número total de páginas
+        const totalPages = Math.ceil(total / pageSize);
+
+        // Verifica si la página solicitada es mayor que el número total de páginas
+        if (page > totalPages && totalPages > 0) {
+            return res
+                .status(404)
+                .send({
+                    message:
+                        "No hay sudaderas en la página solicitada. Por favor, vuelve a una página anterior.",
+                });
+        }
+
+        // Busca las sudaderas en la base de datos con paginación aplicada
         const results = await Sudadera.find().skip(skip).limit(pageSize);
 
-        // Envía los resultados al cliente
-        return res.send(results);
+        // Si no hay resultados y estamos en la página 1, podría ser que no hay sudaderas en absoluto
+        if (results.length === 0 && page === 1) {
+            return res.send({ message: "No hay sudaderas disponibles." });
+        }
+
+        // Envía los resultados y el total (útil para la paginación en el cliente) al cliente
+        return res.send({
+            total,
+            totalPages,
+            page,
+            pageSize,
+            data: results,
+        });
     } catch (error) {
         // Maneja cualquier error que pueda ocurrir
         next(error);

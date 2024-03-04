@@ -4,7 +4,8 @@ import styles from "./HomePage.module.css";
 
 function HomePage() {
     const [sudaderas, setSudaderas] = useState([]);
-    const [pagina, setPagina] = useState(0);
+    const [pagina, setPagina] = useState(1); // Iniciar en la página 1
+    const [totalSudaderas, setTotalSudaderas] = useState(0); // Nuevo estado para almacenar el total de sudaderas
     const [modalVisible, setModalVisible] = useState(false);
     const [sudaderaSeleccionada, setSudaderaSeleccionada] = useState(null);
     const [fotoPrincipal, setFotoPrincipal] = useState("");
@@ -13,19 +14,39 @@ function HomePage() {
         const cargarSudaderas = async () => {
             try {
                 const respuesta = await axios.get(
-                    `http://localhost:3000/sudadera?skip=${pagina}&limit=8`
+                    `http://localhost:3000/sudadera?page=${pagina}&limit=8`
                 );
-                setSudaderas(respuesta.data);
+                if (respuesta.data && Array.isArray(respuesta.data.data)) {
+                    setSudaderas(respuesta.data.data);
+                    setTotalSudaderas(respuesta.data.total); // Actualiza el total de sudaderas
+                } else {
+                    console.error(
+                        "La respuesta no contiene un arreglo de sudaderas:",
+                        respuesta.data
+                    );
+                    setSudaderas([]);
+                }
             } catch (error) {
                 console.error("Error al cargar las sudaderas:", error);
+                setSudaderas([]);
             }
         };
 
         cargarSudaderas();
     }, [pagina]);
 
-    const cargarMas = () => {
-        setPagina((paginaPrev) => paginaPrev + 8);
+    const siguientePagina = () => {
+        // Calcula el número total de páginas
+        const totalPaginas = Math.ceil(totalSudaderas / 8);
+        if (pagina < totalPaginas) {
+            setPagina((paginaPrev) => paginaPrev + 1);
+        }
+    };
+
+    const anteriorPagina = () => {
+        if (pagina > 1) {
+            setPagina((paginaPrev) => paginaPrev - 1);
+        }
     };
 
     const abrirModal = (sudadera) => {
@@ -72,23 +93,35 @@ function HomePage() {
                             className={styles.productoImagen}
                         />
 
-                            <h3>{sudadera.nombre}</h3>
-                            <p>{sudadera.precio}€</p>
-                            <button
-                                onClick={() => abrirModal(sudadera)}
-                                className={styles.verMasBoton}
-                            >
-                               Precio y detalles
-                            </button>
-
+                        <h3>{sudadera.nombre}</h3>
+                        <p>{sudadera.precio}€</p>
+                        <button
+                            onClick={() => abrirModal(sudadera)}
+                            className={styles.verMasBoton}
+                        >
+                            Precio y detalles
+                        </button>
                     </div>
                 ))}
             </div>
-            {sudaderas.length > 0 && (
-                <button onClick={cargarMas} className={styles.cargarMasBoton}>
-                    Cargar más
+            <div className={styles.botonesNav}>
+                <button
+                    onClick={anteriorPagina}
+                    disabled={pagina <= 1} // Deshabilita el botón si estamos en la página 1
+                >
+                    Anterior
                 </button>
-            )}
+                {sudaderas.length > 0 ? (
+                    <button
+                        onClick={siguientePagina}
+                        disabled={pagina >= Math.ceil(totalSudaderas / 8)} // Deshabilita el botón si estamos en la última página
+                    >
+                        Siguiente
+                    </button>
+                ) : (
+                    <p>No hay más sudaderas disponibles.</p>
+                )}
+            </div>
             {modalVisible && (
                 <div className={styles.modal}>
                     <div className={styles.modalContent}>

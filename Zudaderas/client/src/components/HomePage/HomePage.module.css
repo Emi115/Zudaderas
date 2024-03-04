@@ -10,23 +10,35 @@
 }
 
 
+/* Estilo para el contenedor de los productos */
+.productosContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Asegura que los elementos se distribuyan uniformemente */
+    align-items: flex-start; /* Alinea los elementos al comienzo del contenedor */
+    padding: 20px; /* Añade un poco de espacio dentro del contenedor */
+}
 
+/* Estilo para cada producto */
 .producto {
+    flex: 0 1 calc(25% - 40px); /* flex-grow, flex-shrink, flex-basis */
+    margin: 10px; /* Margen entre productos */
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto del elemento */
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 10px;
-
-    margin: 15px;
-    flex-basis: 22%; /* Establece una base para el tamaño de las tarjetas para que cuatro quepan en una fila */
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s; /* Añade una transición suave para el efecto de hover */
-
+    transition: transform 0.2s; /* Efecto suave al pasar el mouse */
 }
 
+.producto:hover {
+    transform: translateY(-5px); /* Eleva el producto al pasar el mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más profunda al pasar el mouse */
+}
 /* Estilo para imágenes para asegurar que se ajusten dentro de las tarjetas más pequeñas */
 .producto img {
     max-width: 300px; /* Ajusta el tamaño de la imagen */
@@ -41,7 +53,8 @@
 .producto p{
     margin: 10px;
 }
-/* Estilo de botones */
+
+/*! Estilo de botones */
 .producto button{
     background-color: #3498db; /* Un azul más suave */
     border-radius: 50px; /* Redondeo moderado */
@@ -54,15 +67,35 @@
     transition: background-color 0.3s, transform 0.2s; /* Transición suave para el color de fondo y transformación */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar profundidad */
 }
-
-
-/* Añade un efecto de hover a las tarjetas para mejorar la interactividad */
-.producto:hover {
-    transform: translateY(-5px); /* Mueve la tarjeta hacia arriba ligeramente */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más prominente */
+.botonesNav {
+    display: flex; /* Alinea los botones en fila */
+    justify-content: space-between; /* Añade espacio entre los botones */
+    align-items: center; /* Centra los botones verticalmente */
+    gap: 10px; /* Espacio adicional entre botones si no quieres que estén muy juntos */
 }
 
-/* Estilos para el modal */
+.botonesNav button {
+    background-color: #007bff;
+    color: white; /* Cambia el color del texto a blanco para mejor contraste */
+    border: none; /* Elimina el borde predeterminado */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Aumenta el tamaño del botón */
+    font-size: 16px; /* Hace el texto un poco más grande */
+    cursor: pointer; /* Cambia el cursor a un puntero */
+    transition: background-color 0.3s ease, transform 0.2s; /* Suaviza la transición de color y transformación */
+}
+
+.botonesNav button:hover {
+    background-color: #0056b3; /* Cambia el color al pasar el mouse para un feedback visual */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
+}
+
+.botonesNav button:active {
+    background-color: #004089; /* Hace el botón un poco más oscuro al hacer clic */
+    transform: scale(0.95); /* Reduce ligeramente el tamaño al hacer clic */
+}
+
+/*!Estilos para el modal */
 .modal {
     position: fixed; /* Posicionamiento fijo para cubrir toda la pantalla */
     top: 0;
