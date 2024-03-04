@@ -13,7 +13,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"username\": \"Diego\",\r\n  \"email\": \"Maricon@gmail.com\",\r\n  \"phoneNumber\": 7,\r\n  \"password\": \"Diego\",\r\n  \"address\": {\r\n    \"street\": \"Calle Principal\",\r\n    \"city\": \"Ciudad Ejemplo\",\r\n    \"state\": \"Estado Ejemplo\",\r\n    \"zip\": \"12345\"\r\n  }\r\n}\r\n",
+          "raw": "{\r\n  \"username\": \"admin\",\r\n  \"email\": \"admin@gmail.com\",\r\n  \"phoneNumber\":0,\r\n  \"password\": \"admin\",\r\n  \"role\":\"admin\",\r\n  \"address\": {\r\n    \"street\": \"Calle\",\r\n    \"city\": \"Tus\",\r\n    \"state\": \"Muertos\",\r\n    \"zip\": \"33\"\r\n  }\r\n}\r\n",
           "options": {
             "raw": {
               "language": "json"
@@ -33,11 +33,21 @@
     {
       "name": "Hacer login",
       "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
         "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"username\": \"Diego\",\r\n  \"password\": \"Diego\"\r\n}\r\n",
+          "raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"admin\"\r\n}\r\n",
           "options": {
             "raw": {
               "language": "json"
@@ -62,7 +72,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDIyZTRlOTk4NDM5NDcxMDRjYzZjMCIsInVzZXJuYW1lIjoiRGllZ28iLCJpYXQiOjE3MDgyNzMyNTAsImV4cCI6MTcwODI3Njg1MH0.uT2rMkxsdk0wFb3nuOfgv_yh1dHKMN1OtgQRn-5Zx6A",
+              "value": "",
               "type": "string"
             }
           ]
@@ -90,7 +100,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDIyZGQ4OTk4NDM5NDcxMDRjYzZiYSIsInVzZXJuYW1lIjoiZW1pIiwiaWF0IjoxNzA4MjczMTE1LCJleHAiOjE3MDgyNzY3MTV9.a8hzhWSn77-ajvIgz2CqMsz9K8gAAVSfoh1d9Rt9LhA",
+              "value": "",
               "type": "string"
             }
           ]
@@ -124,7 +134,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDIyZGQ4OTk4NDM5NDcxMDRjYzZiYSIsInVzZXJuYW1lIjoiZW1pIiwiaWF0IjoxNzA4MjczMTE1LCJleHAiOjE3MDgyNzY3MTV9.a8hzhWSn77-ajvIgz2CqMsz9K8gAAVSfoh1d9Rt9LhA",
+              "value": "",
               "type": "string"
             }
           ]
@@ -158,7 +168,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDIyOTZjN2Q0NTYzMmNlN2NiMzM0MyIsInVzZXJuYW1lIjoiZW1pIiwiaWF0IjoxNzA4MjcyNTA0LCJleHAiOjE3MDgyNzYxMDR9.7Xi02XFvmQKklhRh2y-IdaR6lRycarrghvvJofVn_tA",
+              "value": "",
               "type": "string"
             }
           ]

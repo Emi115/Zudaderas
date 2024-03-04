@@ -9,11 +9,21 @@
     {
       "name": "CrearSudadera",
       "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
         "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"nombre\": \"Sudadera para eliminar\",\r\n  \"color\": \"Azul\",\r\n  \"dibujo\": \"Void\",\r\n  \"talla\": \"L\",\r\n  \"foto\": \"Anakin\",\r\n  \"capucha\": false,\r\n  \"precio\": 1000,\r\n  \"descripcion\": \"Esta sudadera se va a borrar\",\r\n  \"stock\": 1,\r\n  \"valoraciones\": []\r\n}\r\n\r\n",
+          "raw": "{\r\n \"nombre\": \"La Atacada11\",\r\n    \"color\": \"Crema\",\r\n    \"dibujo\": \"Legion de Reconocimiento\",\r\n    \"talla\": \"S\",\r\n    \"foto\": \"AOT1.png\",\r\n    \"fotosSecundarias\": [\r\n    \"AOT1.png\",\r\n    \"AOT2.png\",\r\n    \"AOT3.png\",\r\n    \"AOT4.png\",\r\n    \"AOT5.png\",\r\n    \"AOT6.png\",\r\n    \"AOT7.png\",\r\n    \"AOT8.png\",\r\n    \"AOT9.png\"\r\n  ],\r\n    \"capucha\": false,\r\n    \"precio\": 40,\r\n    \"descripcion\": \"Sudadera de Atack on Titan Modelo: @Nievestg\",\r\n    \"stock\": 1,\r\n    \"valoraciones\": []\r\n}\r\n\r\n",
           "options": {
             "raw": {
               "language": "json"
@@ -36,6 +46,16 @@
         "disableBodyPruning": true
       },
       "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
         "method": "GET",
         "header": [],
         "body": {
@@ -48,11 +68,17 @@
           }
         },
         "url": {
-          "raw": "http://localhost:3000/sudadera",
+          "raw": "http://localhost:3000/sudadera?page=2\n0",
           "protocol": "http",
           "host": ["localhost"],
           "port": "3000",
-          "path": ["sudadera"]
+          "path": ["sudadera"],
+          "query": [
+            {
+              "key": "page",
+              "value": "2\n0"
+            }
+          ]
         }
       },
       "response": []
@@ -75,7 +101,7 @@
           }
         },
         "url": {
-          "raw": "http://localhost:3000/sudadera/search?talla=L&nombre=formerx",
+          "raw": "http://localhost:3000/sudadera/search",
           "protocol": "http",
           "host": ["localhost"],
           "port": "3000",
@@ -83,11 +109,23 @@
           "query": [
             {
               "key": "talla",
-              "value": "L"
+              "value": "L",
+              "disabled": true
             },
             {
-              "key": "nombre",
-              "value": "formerx"
+              "key": "precio",
+              "value": "1000",
+              "disabled": true
+            },
+            {
+              "key": "color",
+              "value": "rojo",
+              "disabled": true
+            },
+            {
+              "key": "stock",
+              "value": "2",
+              "disabled": true
             }
           ]
         }
@@ -101,7 +139,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n              \"fotosSecundarias\": [\"sudaderaaot2.jpg\",\"sudaderaaot.jpg\" ,\"oksana.jpg\"], \r\n}",
+          "raw": "{\r\n  \"fotosSecundarias\": [\r\n    \"AOT1.png\",\r\n    \"AOT2.png\",\r\n    \"AOT3.png\",\r\n    \"AOT4.png\",\r\n    \"AOT5.png\",\r\n    \"AOT6.png\",\r\n    \"AOT7.png\",\r\n    \"AOT8.png\",\r\n    \"AOT9.png\"\r\n  ]\r\n}\r\n",
           "options": {
             "raw": {
               "language": "json"
@@ -109,11 +147,11 @@
           }
         },
         "url": {
-          "raw": "http://localhost:3000/sudadera/65ca53bd31fb5ca4c1f9e088",
+          "raw": "http://localhost:3000/sudadera/65e615eda551f92a412891a1",
           "protocol": "http",
           "host": ["localhost"],
           "port": "3000",
-          "path": ["sudadera", "65ca53bd31fb5ca4c1f9e088"]
+          "path": ["sudadera", "65e615eda551f92a412891a1"]
         }
       },
       "response": []
@@ -121,6 +159,16 @@
     {
       "name": "DeleteSudadera",
       "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
         "method": "DELETE",
         "header": [],
         "body": {
@@ -133,11 +181,11 @@
           }
         },
         "url": {
-          "raw": "http://localhost:3000/sudadera/65c566a68eaae1ad5da9f2ce",
+          "raw": "http://localhost:3000/sudadera/65e63c60cc9c774027b44008",
           "protocol": "http",
           "host": ["localhost"],
           "port": "3000",
-          "path": ["sudadera", "65c566a68eaae1ad5da9f2ce"]
+          "path": ["sudadera", "65e63c60cc9c774027b44008"]
         }
       },
       "response": []
