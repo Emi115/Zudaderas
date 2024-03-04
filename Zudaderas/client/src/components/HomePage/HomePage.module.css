@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Anta&display=swap");
+body {
+    background-color: #483d8b;
+}
 
 .Pagina {
     display: flex;
@@ -8,7 +11,6 @@
     text-align: center;
     font-family: "Anta", sans-serif;
 }
-
 
 /* Estilo para el contenedor de los productos */
 .productosContainer {
@@ -46,16 +48,16 @@
     border-radius: 4px;
     margin-bottom: 8px;
 }
-.producto h3{
+.producto h3 {
     padding-top: 10px;
     margin: 5px;
 }
-.producto p{
+.producto p {
     margin: 10px;
 }
 
 /*! Estilo de botones */
-.producto button{
+.producto button {
     background-color: #3498db; /* Un azul más suave */
     border-radius: 50px; /* Redondeo moderado */
     border: 2px solid transparent; /* Borde transparente que puede cambiar al interactuar */
@@ -87,7 +89,9 @@
 
 .botonesNav button:hover {
     background-color: #0056b3; /* Cambia el color al pasar el mouse para un feedback visual */
-    transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
+    transform: scale(
+        1.05
+    ); /* Aumenta ligeramente el tamaño al pasar el mouse */
 }
 
 .botonesNav button:active {
@@ -166,7 +170,6 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 10px;
-
 }
 
 .imagenSecundaria {
@@ -181,7 +184,6 @@
     flex-direction: column;
     margin: 0px;
     justify-content: space-around; /* Alinea el contenido para empujar el botón hacia abajo */
-
 }
 
 .modalInfo p {
@@ -190,7 +192,6 @@
     text-align: justify; /* Opcional: Alinea el texto de manera justificada para un inicio uniforme y final */
     margin-left: 150px; /* Establece un margen izquierdo uniforme para alinearlos en el mismo eje Y */
 }
-
 
 .modalInfo button {
     padding: 8px 15px; /* Reducimos el padding para hacer el botón más pequeño */
