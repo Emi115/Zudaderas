@@ -68,18 +68,36 @@ function HomePage() {
         setFotoPrincipal(`/images/${foto}`);
     };
 
-    function middlewareCarrito({ children }) {
+    // Función para añadir al carrito
+    const añadirAlCarrito = async (sudaderaId, cantidad = 1) => {
         const token = localStorage.getItem("token");
-
         if (!token) {
-            // Si no hay token, redirigir a la ruta de formulario
-            const puerto = window.location.port || "3001"; // Usa el puerto actual o 3001 si no se encuentra
-            window.location.href = `http://localhost:${puerto}/Formulario`;
-        } else {
-            // Si hay token, mostrar un mensaje indicando que la función de carrito no está implementada
-            alert("Esta función de carrito no está implementada");
+            alert("Por favor, inicia sesión para añadir ítems al carrito.");
+            return;
         }
-    }
+
+        try {
+            const respuesta = await axios.post(
+                "http://localhost:3000/compras/addItem", // Asegúrate de que la URL sea correcta según tu API
+                { sudaderaId, cantidad },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            if (respuesta.status === 200) {
+                alert("Ítem añadido al carrito correctamente.");
+                cerrarModal(); // Opcionalmente puedes cerrar el modal después de añadir al carrito
+            } else {
+                alert("No se pudo añadir el ítem al carrito.");
+            }
+        } catch (error) {
+            console.error("Error al añadir ítem al carrito:", error);
+            alert("Hubo un problema al añadir el ítem al carrito.");
+        }
+    };
 
     return (
         <div className={styles.Pagina}>
@@ -167,7 +185,13 @@ function HomePage() {
                                     Descripción:{" "}
                                     {sudaderaSeleccionada.descripcion}
                                 </p>
-                                <button onClick={middlewareCarrito}>
+                                <button
+                                    onClick={() =>
+                                        añadirAlCarrito(
+                                            sudaderaSeleccionada._id
+                                        )
+                                    }
+                                >
                                     Añadir al carrito
                                 </button>
                             </div>

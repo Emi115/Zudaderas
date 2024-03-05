@@ -51,23 +51,21 @@ export async function addItemAlCarrito(req, res) {
 }
 
 // Obtener el carrito de compras de un usuario
-// Obtener el carrito de compras de un usuario
+
 export async function obtenerCarrito(req, res) {
-    // Utilizar el userId del token de autenticación
     const userId = req.user.id;
 
     try {
-        const compra = await Compra.findOne({ user: userId }).populate(
-            "items.item"
-        );
+        const compra = await Compra.findOne({ user: userId }).populate({
+            path: "items.item",
+            select: "precio foto nombre", // Asegúrate de incluir aquí todos los campos que necesitas
+        });
+
         if (compra) {
-            // Calcula el precio total de los ítems en el carrito
             let precioTotal = 0;
             for (const item of compra.items) {
                 precioTotal += item.cantidad * item.item.precio;
             }
-
-            // Actualiza el precioTotal en el objeto de respuesta sin modificar la base de datos
             compra.precioTotal = precioTotal;
 
             res.status(200).json(compra);
@@ -115,29 +113,30 @@ export async function actualizarCantidadItem(req, res) {
 
 // Eliminar un ítem del carrito
 export async function eliminarItemDelCarrito(req, res) {
-    // Utilizar el userId del token de autenticación
+    // Utilizar el userId del token de autenticación para identificar al usuario
     const userId = req.user.id;
+    // Utilizar el sudaderaId enviado en el cuerpo de la petición para identificar el ítem a eliminar
     const { sudaderaId } = req.body;
 
     try {
         const compra = await Compra.findOne({ user: userId });
 
         if (compra) {
-            compra.items = compra.items.filter(
-                (item) => !item.item.equals(sudaderaId)
-            );
+            // Filtrar los ítems para remover el ítem específico
+            compra.items = compra.items.filter(item => item.item.toString() !== sudaderaId);
             await compra.save();
             res.status(200).json(compra);
         } else {
             res.status(404).json({ message: "Carrito no encontrado" });
         }
     } catch (error) {
-        Logger.error("Error al eliminar item del carrito: ", error);
-        res.status(500).json({ message: "Error al eliminar item del carrito" });
+        Logger.error("Error al eliminar ítem del carrito: ", error);
+        res.status(500).json({ message: "Error al eliminar ítem del carrito" });
     }
 }
 
-// Este conjunto de controladores asume que tienes un sistema de logeo y que el `userId` se obtiene de alguna manera a través del request, ya sea como parte del cuerpo del request, parámetros de la URL, o tokens de autenticación. Ajusta según sea necesario para tu implementación específica.
+
+// !Este conjunto de controladores asume que tienes un sistema de logeo y que el `userId` se obtiene de alguna manera a través del request, ya sea como parte del cuerpo del request, parámetros de la URL, o tokens de autenticación. Ajusta según sea necesario para tu implementación específica.
 
 export async function finalizarCompra(req, res) {
     const { userId } = req.body;

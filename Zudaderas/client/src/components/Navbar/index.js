@@ -1,10 +1,14 @@
 // Navbar.js
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import CarritoModal from "../Carrito/CarritoModal.js"; // Asegúrate de tener este componente creado y su ruta correcta
 import styles from "./Navbar.module.css";
 
 function Navbar() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const userRole = localStorage.getItem("userRole");
+
+    const toggleModal = () => setIsModalOpen(!isModalOpen);
 
     return (
         <nav className={styles.navbar}>
@@ -33,7 +37,11 @@ function Navbar() {
                 <Link to="/" className={styles.navLink}>
                     Categorias
                 </Link>
+                <button onClick={toggleModal} className={styles.navButton}>
+                    Carrito
+                </button>
             </div>
+            {isModalOpen && <CarritoModal closeModal={toggleModal} />}
         </nav>
     );
 }

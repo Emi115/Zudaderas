@@ -287,14 +287,7 @@ function UserComponent() {
                 required
             />
 
-            <input
-                type="text"
-                name="profilePicture"
-                value={userData.profilePicture}
-                onChange={handleChange}
-                placeholder="Profile Picture URL"
-                className={styles.input}
-            />
+
             <button type="submit" className={styles.button}>
                 Register
             </button>
