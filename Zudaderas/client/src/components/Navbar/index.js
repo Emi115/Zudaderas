@@ -28,7 +28,7 @@ function Navbar() {
             />
             <div className={styles.linksContainer}>
                 <Link to="/Formulario" className={styles.navLink}>
-                    Login/Register
+                    Usuario
                 </Link>
                 <Link to="/" className={styles.navLink}>
                     Categorias

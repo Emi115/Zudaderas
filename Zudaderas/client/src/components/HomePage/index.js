@@ -83,7 +83,7 @@ function HomePage() {
 
     return (
         <div className={styles.Pagina}>
-            <h1>Zudaderas</h1>
+            <h1>Zudaderas disponibles</h1>
             <div className={styles.productosContainer}>
                 {sudaderas.map((sudadera) => (
                     <div key={sudadera.nombre} className={styles.producto}>
