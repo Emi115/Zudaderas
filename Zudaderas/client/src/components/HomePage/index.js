@@ -72,8 +72,9 @@ function HomePage() {
     const añadirAlCarrito = async (sudaderaId, cantidad = 1) => {
         const token = localStorage.getItem("token");
         if (!token) {
-            alert("Por favor, inicia sesión para añadir ítems al carrito.");
-            return;
+            // Si no hay token, redirigir a la ruta de formulario
+            const puerto = window.location.port || "3001"; // Usa el puerto actual o 3001 si no se encuentra
+            window.location.href = `http://localhost:${puerto}/Formulario`;
         }
 
         try {
