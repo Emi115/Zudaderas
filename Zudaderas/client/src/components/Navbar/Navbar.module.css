@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Anta&display=swap");
 /* Navbar.module.css */
+
 .navbar {
     background-color: #4c2882;
     display: flex;
@@ -14,8 +15,15 @@
 
 .linksContainer {
     display: flex;
-    justify-content: flex-start;
-    margin: 0 120px; /* Margen aumentado para crear espacio alrededor del logo */
+    justify-content:space-around; /* Distribuye uniformemente los enlaces */
+    align-items: center; /* Centra verticalmente los enlaces */
+    width: calc(100% - 200px); /* Ajusta el ancho excluyendo el espacio del logo */
+}
+
+.logo {
+    width: 150px; /* Tamaño del logo */
+    margin-right: 20px; /* Separación entre el logo y los enlaces */
+    pointer-events: none; /* Evita que se puedan atravesar los elementos */
 }
 
 .navLink {
@@ -23,7 +31,6 @@
     background-color: #613d97; /* Ejemplo de un tono de morado */
     text-align: center;
     padding: 20px 24px; /* Aumentado para hacer el botón más grande */
-    margin-right: 10px; /* Agrega espacio entre los botones si es necesario */
     text-decoration: none;
     font-size: 18px; /* Aumentado para un mejor balance con el botón más grande */
     font-weight: bold;
@@ -35,11 +42,23 @@
     background-color: #6d6552; /* Un tono más oscuro de morado para el efecto hover */
 }
 
-.logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 150px; /* Tamaño del logo aumentado */
-    height: auto;
+
+
+
+
+.navButton {
+    color: white; /* o cualquier otro color que resalte sobre el morado */
+    background-color: #613d97; /* Ejemplo de un tono de morado */
+    text-align: center;
+    padding: 20px 24px; /* Aumentado para hacer el botón más grande */
+    margin-right: 10px; /* Agrega espacio entre los botones si es necesario */
+    text-decoration: none;
+    font-size: 18px; /* Aumentado para un mejor balance con el botón más grande */
+    font-weight: bold;
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s; /* Transición suave para hover */
+    border: none;
+}
+.navButton:hover {
+    background-color: #6d6552; /* Un tono más oscuro de morado para el efecto hover */
 }
