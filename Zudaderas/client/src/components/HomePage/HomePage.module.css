@@ -1,7 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Anta&display=swap");
-body {
-    background-color: #483d8b;
-}
+@keyframes animatedBackground {
+    0% { background-position: 0 0; }
+    50% { background-position: 100% 0; }
+    100% { background-position: 0 0; }
+  }
+
+  body {
+    background: linear-gradient(270deg, #483d8b, #6a5acd, #7b68ee, #6a5acd, #483d8b);
+    background-size: 400% 400%;
+    animation: animatedBackground 15s ease infinite;
+  }
 
 .Pagina {
     display: flex;
