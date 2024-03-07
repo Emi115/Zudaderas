@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Anta&family=Nunito:wght@200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anta&family=Nunito:wght@200&display=swap");
 /* Estilos para el contenedor principal */
 /* Alinea el contenedor principal al centro verticalmente y horizontalmente */
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+
     min-height: 100vh; /* Garantiza que el contenedor tenga al menos el alto de la ventana */
     padding: 20px;
 }
@@ -19,29 +19,29 @@
     max-width: 400px; /* Limita el ancho máximo del formulario */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #646464;
+    box-shadow: 0 2px 4px rgb(28, 0, 30);
+    background-color: #613d97;
     align-items: center;
 }
 
 /* Estilos para los campos de entrada */
 .input {
+    font-family: "Anta", sans-serif;
     padding: 10px;
-    border: 1px solid #838383;
-    background-color: #454545;
+    border: none;
+    background-color: #6d6552;
     border-radius: 4px;
     font-size: 16px;
     color: #ffffff;
 }
 input:focus {
     outline: none; /* Elimina el borde al enfocar el input */
+    background-color: #4b453a;
 }
 
-.BotonesDiv{
-
-        display: flex;
-        justify-content: space-between;
-
+.BotonesDiv {
+    display: flex;
+    justify-content: space-between;
 }
 .BotonesDiv .button {
     margin-right: 10px; /* Agrega espacio entre los botones */
@@ -57,7 +57,6 @@ input:focus {
     cursor: pointer;
     font-size: 16px;
     width: 140px; /* Ancho del botón */
-
 }
 
 /* Estilos para el botón secundario */
@@ -85,35 +84,46 @@ input:focus {
     color: #000000; /* Cambia el color del texto al pasar el ratón */
 }
 
-/* Estilos para la información del usuario y botones */
 .userInfoContainer {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 100%;
-    max-width: 400px;
+    align-items: center;
+    max-width: 500px;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #333333;
-    align-items: center; /* Centra los elementos horizontalmente */
+    box-shadow: 0 2px 4px rgb(28, 0, 30);
+    background-color: #613d97;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 /* Ajustes adicionales para el texto y otros elementos dentro de userInfoContainer */
 .userInfoText {
     text-align: center; /* Centra el texto dentro de su contenedor */
 }
+/*! Aqui me esta dando problemas todo*/
 
-.FotoPerfil{
-    border-radius: 200px;
-    border: #000000 2px solid;
-    user-select: none; /* Evita la selección de texto */
-    pointer-events: none; /* Evita eventos de puntero */
-    width: 200px;
-    height: 200px;
+
+.alinearItems img {
+    width: 100%; /* Ajusta la imagen al ancho del contenedor */
+    height: auto; /* Permite que la altura se ajuste proporcionalmente */
+    margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+    display: block;
 }
 
 
+
+
+.FotoPerfil {
+    border-radius: 200px;
+    border: #000000 1px solid;
+    user-select: none;
+    pointer-events: none;
+
+}
 
 .Texto {
     font-family: "Anta", sans-serif;

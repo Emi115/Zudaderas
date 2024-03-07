@@ -287,7 +287,6 @@ function UserComponent() {
                 required
             />
 
-
             <button type="submit" className={styles.button}>
                 Register
             </button>
@@ -409,13 +408,13 @@ function UserComponent() {
             ) : (
                 <>
                     {userInfo ? (
-                        <div>
+                        <div className={styles.alinearItems}>
                             {userInfo.profilePicture && (
                                 <p>
                                     <img
                                         className={styles.FotoPerfil}
-                                        src={`/images/${userInfo.profilePicture}`} // Usa la ruta dinámica basada en userInfo.profilePicture
-                                        alt="Profile"
+                                        src={userInfo.profilePicture} // Usa la ruta dinámica basada en userInfo.profilePicture
+                                        alt="Foto de perfil"
                                         draggable="false"
                                     />
                                 </p>
