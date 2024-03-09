@@ -86,7 +86,7 @@ function CarritoModal({ closeModal }) {
                                     src={
                                         item.item.foto
                                             ? `/images/${item.item.foto}`
-                                            : "/images/defaultImage.png"
+                                            : "/images/defaultImage.png" //nose que hace esto aqui
                                     }
                                     alt={item.item.nombre}
                                     className={styles.itemImage}
