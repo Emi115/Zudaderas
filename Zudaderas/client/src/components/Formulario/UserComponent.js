@@ -183,7 +183,7 @@ function UserComponent() {
     const handleLogout = () => {
         // Cierra la sesión del usuario.
         localStorage.removeItem("token");
-        //Cierra la sesion dek¡l UserRole por si es admin
+        //Cierra la sesion del UserRole por si es admin
         localStorage.removeItem("userRole");
 
         // Restablece los estados a sus valores predeterminados
@@ -209,12 +209,12 @@ function UserComponent() {
                 zip: "",
             },
         });
-        window.location.reload(); // Considera evitar recargar la página para una experiencia de usuario más fluida.
+        window.location.reload(); //! Considera evitar recargar la página para una experiencia de usuario más fluida.
 
         // Si tienes otros estados que necesitan ser limpiados, asegúrate de restablecerlos aquí.
     };
 
-    // Componentes de la interfaz de usuario para el formulario de inicio de sesión, registro y visualización de la información del usuario.
+    //! Componentes de la interfaz de usuario para el formulario de inicio de sesión, registro y visualización de la información del usuario.
     const LoginForm = (
         <form onSubmit={handleLoginSubmit} className={styles.form}>
             <input
@@ -318,7 +318,7 @@ function UserComponent() {
                     />
                     <input
                         type="number"
-                        placeholder="Phone Number"
+                        placeholder="Numero de telefono"
                         value={userData.phoneNumber}
                         onChange={(e) =>
                             setUserData({
@@ -330,7 +330,7 @@ function UserComponent() {
                     />
                     <input
                         type="text"
-                        placeholder="Profile Picture URL"
+                        placeholder="Url Foto Perfil"
                         value={userData.profilePicture}
                         onChange={(e) =>
                             setUserData({
@@ -343,7 +343,7 @@ function UserComponent() {
                     {/* Dirección */}
                     <input
                         type="text"
-                        placeholder="Street"
+                        placeholder="Calle"
                         value={userData.address.street}
                         onChange={(e) =>
                             setUserData({
@@ -358,7 +358,7 @@ function UserComponent() {
                     />
                     <input
                         type="text"
-                        placeholder="City"
+                        placeholder="Ciudad"
                         value={userData.address.city}
                         onChange={(e) =>
                             setUserData({
@@ -373,7 +373,7 @@ function UserComponent() {
                     />
                     <input
                         type="text"
-                        placeholder="State"
+                        placeholder="Provincia"
                         value={userData.address.state}
                         onChange={(e) =>
                             setUserData({
@@ -388,7 +388,7 @@ function UserComponent() {
                     />
                     <input
                         type="text"
-                        placeholder="Zip"
+                        placeholder="Codigo postal"
                         value={userData.address.zip}
                         onChange={(e) =>
                             setUserData({
@@ -419,17 +419,17 @@ function UserComponent() {
                                     />
                                 </p>
                             )}
-                            <p className={styles.Texto}>
-                                Nombre: {userInfo.username}
-                            </p>
-                            <p className={styles.Texto}>
-                                Gmail: {userInfo.email}
-                            </p>
-                            <p className={styles.Texto}>
-                                Numero de Telefono: {userInfo.phoneNumber}
-                            </p>
-
                             <div>
+                                {" "}
+                                <p className={styles.Texto}>
+                                    Nombre: {userInfo.username}
+                                </p>
+                                <p className={styles.Texto}>
+                                    Gmail: {userInfo.email}
+                                </p>
+                                <p className={styles.Texto}>
+                                    Numero de Telefono: {userInfo.phoneNumber}
+                                </p>
                                 <p className={styles.Texto}>
                                     Calle: {userInfo.address?.street}
                                 </p>
@@ -469,7 +469,7 @@ function UserComponent() {
         </div>
     );
 
-    // Renderizado condicional basado en el estado de autenticación y la vista actual.
+    // !Renderizado condicional basado en el estado de autenticación y la vista actual.
     return (
         <div className={styles.container}>
             {view === "login" && !isAuthenticated && LoginForm}

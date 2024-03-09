@@ -112,12 +112,12 @@ function CarritoModal({ closeModal }) {
                                             +
                                         </button>
                                     </div>
-                                    <p>Precio: ${item.item.precio}</p>
+                                    <p>Precio: {item.item.precio}€</p>
                                     <p>
-                                        Subtotal: $
+                                        Subtotal:{" "}
                                         {(
                                             item.cantidad * item.item.precio
-                                        ).toFixed(2)}
+                                        ).toFixed(2)}€
                                     </p>
                                     <button
                                         onClick={() =>
@@ -137,8 +137,8 @@ function CarritoModal({ closeModal }) {
                 {carrito.items.length > 0 && (
                     <>
                         <div className={styles.totalCarrito}>
-                            Precio Total del Carrito: $
-                            {precioTotalCarrito.toFixed(2)}
+                            Precio Total del Carrito:{" "}
+                            {precioTotalCarrito.toFixed(2)}€
                         </div>
                         <div className={styles.finalizarCompra}>
                             <button onClick={finalizarCompra}>
