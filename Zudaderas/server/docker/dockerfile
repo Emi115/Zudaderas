@@ -1,0 +1,23 @@
+# Establece la imagen base
+FROM node:21.1.0
+
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /app/server
+
+# Crea la carpeta 'server' en el directorio de trabajo del contenedor
+RUN mkdir -p /app/server
+
+# Copia el contenido de la carpeta 'server' desde el host al contenedor
+COPY ./server /app/server
+
+# Cambia el directorio de trabajo al directorio raíz del contenedor
+WORKDIR /app
+
+# Instala las dependencias
+RUN npm install
+
+# Expone el puerto en el que la aplicación estará escuchando
+EXPOSE 3000
+
+# Comando para ejecutar la aplicación
+CMD ["npm", "start"]
