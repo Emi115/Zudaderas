@@ -17,7 +17,7 @@ export function checkToken(req, res, next) {
     try {
         const decoded = jwt.verify(token, config.app.secretKey);
         // Asumiendo que el payload del token tiene una propiedad 'username'
-        req.user = { username: decoded.username };
+        req.user = decoded;
         next();
     } catch (err) {
         return res.status(401).json({ message: "Invalid token" });
